@@ -1,9 +1,14 @@
 import './App.css';
+import NewsFeed from './components/NewsFeed';
 
 function App() {
   return (
     <div className="App">
-      <h1>Projet Reddit Programmer Humor</h1>
+      <NewsFeed />
+      <NewsFeed />
+      <NewsFeed />
+      <NewsFeed />
+      <NewsFeed />
     </div>
   );
 }
