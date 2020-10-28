@@ -6,4 +6,16 @@
   border-radius: 100%;
   width: 100px;
   height: 100px;
+  color: #ff885b;
+  background-color: #585e68;
+  box-shadow: 0 10px 10px;
+}
+.like:hover {
+  background-color: #f1f1f1;
+}
+.comment:hover {
+  background-color: #f1f1f1;
+}
+.date:hover {
+  background-color: #f1f1f1;
 }
