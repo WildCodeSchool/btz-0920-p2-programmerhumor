@@ -20,10 +20,13 @@ class Contact extends Component {
   render() {
     const { showPopUp } = this.state;
     return (
-      <button type="button" onClick={this.popUp}>
-        Contact
-        {showPopUp ? <PopUpForm closePopup={this.popUp} /> : null}
-      </button>
+      <div>
+        <button type="button" onClick={this.popUp}>
+          Contact
+        </button>
+
+        {showPopUp ? <PopUpForm closePopUp={this.popUp} /> : null}
+      </div>
     );
   }
 }
