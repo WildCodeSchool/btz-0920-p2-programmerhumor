@@ -1,11 +1,11 @@
 import './popUpForm.css';
 
-function PopUpForm(closePopUp) {
+function PopUpForm(Contact) {
   return (
     <div className="window">
       <div className="popUp">
         <h1>Contact</h1>
-        <form>
+        <form className="form">
           <label htmlFor="name">
             Name
             <input id="name" type="text" name="Name" />
@@ -19,7 +19,7 @@ function PopUpForm(closePopUp) {
             <textarea>Message</textarea>
           </label>
           <button type="button">Submit</button>
-          <button type="button" onClick={closePopUp}>
+          <button type="button" onClick={Contact.closePopUp}>
             Annuler
           </button>
         </form>

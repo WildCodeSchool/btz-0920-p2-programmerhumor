@@ -1,6 +1,6 @@
 function ScrollToTop() {
   const handleClick = () => {
-    window.scrollTo(0, 0, 'smooth');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
