@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PopUpForm from './PopUpForm';
+import './contact.css';
 
 class Contact extends Component {
   constructor() {
@@ -21,9 +22,9 @@ class Contact extends Component {
     const { showPopUp } = this.state;
     return (
       <div>
-        <button type="button" onClick={this.popUp}>
+        <a href onClick={this.popUp}>
           Contact
-        </button>
+        </a>
 
         {showPopUp ? <PopUpForm closePopUp={this.popUp} /> : null}
       </div>

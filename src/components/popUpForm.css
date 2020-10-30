@@ -19,8 +19,14 @@
   margin-bottom: 30px;
   background: white;
   position: absolute;
+  height: 350px;
 }
-
-.form {
-  text-align: center;
+form {
+  display: block;
+  width: 100px;
+}
+textarea {
+  resize: none;
+  width: 50vh;
+  height: 50px;
 }
