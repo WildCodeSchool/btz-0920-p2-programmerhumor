@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import { FcReddit } from 'react-icons/fc';
-import { IoIosArrowDown } from 'react-icons/io';
-import { GoThreeBars } from 'react-icons/go';
 import { FaTimes } from 'react-icons/fa';
+import { GoThreeBars } from 'react-icons/go';
+import { IoIosArrowDown } from 'react-icons/io';
 import menuItems from './menuItems';
 import Button from '../Button';
 import './Header.css';
@@ -28,7 +28,7 @@ class Header extends Component {
         </div>
         <h1 className="header-logo">Reddit</h1>
         <button type="button" className="menu-icon" onClick={this.handleClick}>
-          <i className={clicked ? <FaTimes /> : <GoThreeBars />} />
+          {clicked ? <FaTimes /> : <GoThreeBars />}
         </button>
         <ul className={clicked ? 'nav-menu active' : 'nav-menu'}>
           {menuItems.map((item) => {
