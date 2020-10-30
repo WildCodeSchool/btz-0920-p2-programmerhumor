@@ -1,14 +1,11 @@
 .HeaderItems {
-  background: linear-gradient(
-    90deg,
-    rgb(110, 94, 254) 0%,
-    rgba(73, 63, 252, 1) 100%
-  );
+  background: #f1f1f1;
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
+  border-bottom: 1px solid #585e68;
 }
 
 .header-logo {
@@ -20,7 +17,8 @@
 
 .fa-reddit {
   margin-left: 0.5rem;
-  font-size: 1.6rem;
+  margin-top: 0.8rem;
+  font-size: 4.5rem;
 }
 
 .nav-menu {
@@ -35,19 +33,20 @@
 }
 
 .nav-links {
-  color: white;
+  color: #585e68;
   text-decoration: none;
   padding: 0.5rem 1rem;
 }
 
 .nav-links:hover {
-  background-color: #6d76f7;
+  color: #f1f1f1;
+  background-color: #fe4602;
   border-radius: 4px;
   transition: all 0.2s ease-out;
 }
 
 .fa-bars {
-  color: white;
+  color: #585e68;
 }
 
 .nav-links-mobile {
@@ -58,7 +57,7 @@
   display: none;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 700px) {
   .HeaderItems {
     position: relative;
   }
@@ -76,7 +75,7 @@
   }
 
   .nav-menu.active {
-    background: #6668f4;
+    background: #f1f1f1;
     left: 0;
     opacity: 1;
     transition: all 0.5s ease;
@@ -91,7 +90,7 @@
   }
 
   .nav-links:hover {
-    background-color: #7577fa;
+    background-color: #fe4602;
     border-radius: 0;
   }
 
@@ -113,7 +112,7 @@
   }
 
   .fa-times {
-    color: white;
+    color: #f1f1f1;
     font-size: 2rem;
   }
 
@@ -124,15 +123,15 @@
     margin: 2rem auto;
     border-radius: 4px;
     width: 80%;
-    background: #4ad9e4;
+    background: #ff885b;
     text-decoration: none;
-    color: white;
+    color: #f1f1f1;
     font-size: 1.5rem;
   }
 
   .nav-links-mobile:hover {
-    background: white;
-    color: #6568f4;
+    background: #f1f1f1;
+    color: #fe4602;
     transition: 250ms;
   }
 
