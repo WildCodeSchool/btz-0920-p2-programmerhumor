@@ -1,28 +1,36 @@
 //  import React from 'react';
-import propTypes from 'prop-types';
+import { useState } from 'react';
 import './Filter.css';
 
-function Filter({ like, comment, recent }) {
+function Filter() {
+  const [likeclicked, setLikeClicked] = useState(false);
+  const [commentclicked, setCommentClicked] = useState(false);
+  const [dateclicked, setDateClicked] = useState(false);
   return (
     <div className="filter">
-      <button type="button" className="like">
-        {' '}
-        {like}{' '}
+      <button
+        onClick={() => setLikeClicked(!likeclicked)}
+        type="button"
+        className={likeclicked ? 'most' : 'like'}
+      >
+        Like
       </button>
-      <button type="button" className="comment">
-        {' '}
-        {comment}{' '}
+      <button
+        onClick={() => setCommentClicked(!commentclicked)}
+        type="button"
+        className={commentclicked ? 'most' : 'comment'}
+      >
+        Comment
       </button>
-      <button type="button" className="date">
-        {' '}
-        {recent}{' '}
+      <button
+        onClick={() => setDateClicked(!dateclicked)}
+        type="button"
+        className={dateclicked ? 'most' : 'date'}
+      >
+        Recent
       </button>
     </div>
   );
 }
-Filter.propTypes = {
-  like: propTypes.string.isRequired,
-  comment: propTypes.string.isRequired,
-  recent: propTypes.string.isRequired,
-};
+
 export default Filter;
