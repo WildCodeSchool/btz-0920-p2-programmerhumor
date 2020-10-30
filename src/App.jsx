@@ -1,12 +1,18 @@
 import Header from './components/Header/Header';
-import './App.css';
+import NewsFeed from './components/NewsFeed';
 import Filter from './components/Filter';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Filter />
+      <NewsFeed />
+      <NewsFeed />
+      <NewsFeed />
+      <NewsFeed />
+      <NewsFeed />
     </div>
   );
 }

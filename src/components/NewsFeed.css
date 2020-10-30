@@ -1,0 +1,101 @@
+/* NewsFeed Component */
+.content-main {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.box-1 {
+  background-color: #f1f1f1;
+  width: 50%;
+  height: 400px;
+  border: solid 1px #585e68;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: 50px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.like {
+  margin-right: 5px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: 1px solid rgb(219, 217, 217);
+  font-size: medium;
+  border-radius: 5px;
+  background-color: #ff885b;
+  margin-bottom: 10px;
+  color: white;
+  outline: 0;
+}
+.notLike {
+  margin-right: 5px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: 1px solid rgb(219, 217, 217);
+  font-size: medium;
+  border-radius: 5px;
+  background-color: rgb(219, 217, 217);
+  margin-bottom: 10px;
+  color: white;
+  outline: 0;
+}
+
+.comment {
+  margin-right: 5px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: 1px solid rgb(219, 217, 217);
+  font-size: medium;
+  border-radius: 5px;
+  background-color: rgb(219, 217, 217);
+  color: white;
+  outline: 0;
+}
+.share {
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: 1px solid rgb(219, 217, 217);
+  font-size: medium;
+  border-radius: 5px;
+  background-color: rgb(219, 217, 217);
+  color: white;
+  outline: 0;
+}
+
+.like:hover {
+  border-color: #ff885b;
+}
+.notLike:hover {
+  background-color: #585e68;
+  border-color: #585e68;
+}
+.comment:hover {
+  background-color: #585e68;
+  border-color: #585e68;
+}
+
+.share:hover {
+  background-color: #585e68;
+  border-color: #585e68;
+}
+
+#comment-text {
+  border: rgb(219, 217, 217);
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: solid 1px #585e68;
+  width: 850px;
+  height: 30px;
+  resize: none;
+  outline: 0;
+}
+
+.interface-comment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
