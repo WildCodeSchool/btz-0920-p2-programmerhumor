@@ -1,0 +1,33 @@
+.filter {
+  display: flex;
+  justify-content: center;
+}
+.filter button {
+  border-radius: 100%;
+  border: 1px solid #585e68;
+  width: 100px;
+  height: 100px;
+  color: #585e68;
+  background-color: #f1f1f1;
+  font-size: 18px;
+}
+.like:hover {
+  background-color: #fe4602;
+  color: #f1f1f1;
+}
+.comment:hover {
+  background-color: #fe4602;
+  color: #f1f1f1;
+}
+.date:hover {
+  background-color: #fe4602;
+  color: #f1f1f1;
+}
+.filter button.most {
+  color: #f1f1f1;
+  background-color: #fe4602;
+}
+button {
+  margin: 3%;
+  margin-top: 0%;
+}
