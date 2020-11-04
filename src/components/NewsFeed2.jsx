@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   Card,
   CardImg,
@@ -7,7 +8,7 @@ import {
   Button,
 } from 'reactstrap';
 
-const NewsFeed2 = (id, userId, title, body) => {
+const NewsFeed2 = ({ title, body }) => {
   return (
     <div className="w-50 h-50 p-3 mx-auto">
       <Card>
@@ -27,6 +28,11 @@ const NewsFeed2 = (id, userId, title, body) => {
       </Card>
     </div>
   );
+};
+
+NewsFeed2.propTypes = {
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
 };
 
 export default NewsFeed2;

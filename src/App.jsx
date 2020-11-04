@@ -11,7 +11,7 @@ const App = () => {
 
   useEffect(() => {
     axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
-      setPost(res.data);
+      setPost(res.data); // chemin datas?
     });
   }, []);
 
@@ -19,12 +19,11 @@ const App = () => {
     <div className="App">
       <Header2 />
       <Filter2 />
-      <NewsFeed2
+      <NewsFeed2 // quelles props?
         id={post.id}
         userId={post.userId}
         title={post.title}
         body={post.body}
-        key={post.id}
       />
       <Footer2 />
     </div>
@@ -32,3 +31,6 @@ const App = () => {
 };
 
 export default App;
+
+// map?
+// setTimeout?
