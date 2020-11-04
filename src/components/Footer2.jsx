@@ -15,7 +15,7 @@ const Footer2 = (props) => {
             </NavLink>
           </div>
           <div className="col-4">
-            <Button>
+            <Button className="mt-2">
               <ScrollToTop />
             </Button>
           </div>
