@@ -32,6 +32,7 @@ const App = () => {
                 title={post.title}
                 selftext={post.selftext}
                 author={post.author_fullname}
+                url={post.url_overridden_by_dest}
               />
             );
           })}

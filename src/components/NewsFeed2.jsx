@@ -11,19 +11,17 @@ import {
 } from 'reactstrap';
 import './body.css';
 
-const NewsFeed2 = ({ title, selftext }) => {
+const NewsFeed2 = ({ title, selftext, url }) => {
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
 
   return (
     <Col sm="12" md={{ size: 6, offset: 3 }}>
       <Card>
-        <CardImg
-          top
-          width="100%"
-          src="https://via.placeholder.com/318x180"
-          alt="Card image cap"
-        />
+        {url ? (
+          <CardImg top width="100%" src={url} alt="Card image cap" />
+        ) : null}
+
         <CardBody>
           <CardTitle>{title}</CardTitle>
           <CardText>{selftext}</CardText>
@@ -55,6 +53,7 @@ const NewsFeed2 = ({ title, selftext }) => {
 NewsFeed2.propTypes = {
   title: PropTypes.string.isRequired,
   selftext: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default NewsFeed2;
