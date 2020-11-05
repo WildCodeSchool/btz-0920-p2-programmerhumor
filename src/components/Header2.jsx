@@ -23,7 +23,7 @@ const Header2 = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div className="fixed-top border-bottom w-100">
+    <div className="border-bottom w-100">
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">
           <FontAwesomeIcon

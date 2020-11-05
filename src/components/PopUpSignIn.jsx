@@ -27,7 +27,7 @@ const PopUpSignIn = (props) => {
 
   return (
     <div>
-      <Button className="m-5" color="outline-info" onClick={toggle}>
+      <Button className="bg-orange m-5" color="outline-info" onClick={toggle}>
         {buttonLabel} Sign in
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
