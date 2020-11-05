@@ -1,23 +1,24 @@
 import { Button, NavLink } from 'reactstrap';
+import PopUpForm from './PopUpForm';
 import ScrollToTop from './ScrollToTop';
 import './Footer2.css';
-import PopUpForm from './PopUpForm';
 
-// eslint-disable-next-line no-unused-vars
-const Footer2 = (props) => {
+const Footer2 = () => {
   return (
-    <div className="footer py-2 fixed-bottom">
-      <div className="container">
-        <div className="row justify-content-around">
-          <div className="col-4">
-            <NavLink>
-              <PopUpForm />
-            </NavLink>
-          </div>
-          <div className="col-4">
-            <Button className="mt-2">
-              <ScrollToTop />
-            </Button>
+    <div className="fixed-bottom border-top">
+      <div className="footer py-2">
+        <div className="container">
+          <div className="row justify-content-around">
+            <div className="col-4">
+              <NavLink>
+                <PopUpForm />
+              </NavLink>
+            </div>
+            <div className="col-4">
+              <Button className="mt-2">
+                <ScrollToTop />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -26,4 +27,3 @@ const Footer2 = (props) => {
 };
 
 export default Footer2;
-// fixed footer

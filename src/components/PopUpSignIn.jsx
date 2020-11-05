@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable react/prop-types */
 import {
   Button,
   Form,
@@ -12,7 +12,7 @@ import {
   ModalFooter,
 } from 'reactstrap';
 
-const PopUpForm = (props) => {
+const PopUpSignIn = (props) => {
   const { buttonLabel, className } = props;
 
   const [modal, setModal] = useState(false);
@@ -27,12 +27,12 @@ const PopUpForm = (props) => {
 
   return (
     <div>
-      <Button color="outline-info" onClick={toggle}>
-        {buttonLabel}Contact
+      <Button className="bg-orange m-5" color="outline-info" onClick={toggle}>
+        {buttonLabel} Sign in
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle} close={closeBtn}>
-          Contact
+          Sign in
         </ModalHeader>
         <ModalBody>
           <Form>
@@ -58,19 +58,28 @@ const PopUpForm = (props) => {
               </small>
             </FormGroup>
             <FormGroup>
-              <Label for="exampleText">Message</Label>
+              <Label for="examplePassword">Password</Label>
               <Input
-                type="textarea"
-                name="text"
-                id="exampleText"
-                resize="none"
+                type="password"
+                name="password"
+                id="examplePassword"
+                placeholder=""
               />
+              <small id="passwordHelpBlock" className="form-text text-muted">
+                Your password must be 8-20 characters long, contain letters and
+                numbers.
+              </small>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="checkbox" /> Agree to terms and conditions
+              </Label>
             </FormGroup>
           </Form>
         </ModalBody>
         <ModalFooter>
           <Button color="outline-info" onClick={toggle}>
-            Send
+            Sign in
           </Button>{' '}
         </ModalFooter>
       </Modal>
@@ -78,9 +87,4 @@ const PopUpForm = (props) => {
   );
 };
 
-PopUpForm.propTypes = {
-  buttonLabel: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
-};
-
-export default PopUpForm;
+export default PopUpSignIn;

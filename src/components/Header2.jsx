@@ -10,9 +10,12 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  NavLink,
 } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedditAlien } from '@fortawesome/free-brands-svg-icons';
+import PopUpSignIn from './PopUpSignIn';
+import PopUpLogIn from './PopUpLogIn';
 
 const Header2 = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,27 +23,32 @@ const Header2 = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div className="border-bottom w-100">
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">
-          <FontAwesomeIcon icon={faRedditAlien} size="5x" color="#fe4602" />
+          <FontAwesomeIcon
+            icon={faRedditAlien}
+            size="4x"
+            color="#fe4602"
+            className="m-4"
+          />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <button type="button" className="btn btn-outline-secondary m-2">
-                Sign up
-              </button>
+              <NavLink>
+                <PopUpSignIn />
+              </NavLink>
             </NavItem>
             <NavItem>
-              <button type="button" className="btn btn-outline-secondary m-2">
-                Login
-              </button>
+              <NavLink>
+                <PopUpLogIn />
+              </NavLink>
             </NavItem>
             <UncontrolledDropdown
               direction="right"
-              className="m-2"
+              className="m-5"
               nav
               inNavbar
             >

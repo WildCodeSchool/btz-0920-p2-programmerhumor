@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable react/prop-types */
 import {
   Button,
   Form,
@@ -12,7 +12,7 @@ import {
   ModalFooter,
 } from 'reactstrap';
 
-const PopUpForm = (props) => {
+const PopUpLogIn = (props) => {
   const { buttonLabel, className } = props;
 
   const [modal, setModal] = useState(false);
@@ -27,24 +27,15 @@ const PopUpForm = (props) => {
 
   return (
     <div>
-      <Button color="outline-info" onClick={toggle}>
-        {buttonLabel}Contact
+      <Button className="m-5" color="outline-info" onClick={toggle}>
+        {buttonLabel} Log in
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle} close={closeBtn}>
-          Contact
+          Log in
         </ModalHeader>
         <ModalBody>
           <Form>
-            <FormGroup>
-              <Label for="exampleUserName">Name</Label>
-              <Input
-                type="UserName"
-                name="UserName"
-                id="exampleUserName"
-                placeholder=""
-              />
-            </FormGroup>
             <FormGroup>
               <Label for="exampleEmail">Email</Label>
               <Input
@@ -53,24 +44,26 @@ const PopUpForm = (props) => {
                 id="exampleEmail"
                 placeholder=""
               />
-              <small id="emailHelp" className="form-text text-muted">
-                We will never share your email with anyone else.
-              </small>
             </FormGroup>
             <FormGroup>
-              <Label for="exampleText">Message</Label>
+              <Label for="examplePassword">Password</Label>
               <Input
-                type="textarea"
-                name="text"
-                id="exampleText"
-                resize="none"
+                type="password"
+                name="password"
+                id="examplePassword"
+                placeholder=""
               />
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="checkbox" /> Remember me
+              </Label>
             </FormGroup>
           </Form>
         </ModalBody>
         <ModalFooter>
           <Button color="outline-info" onClick={toggle}>
-            Send
+            Log in
           </Button>{' '}
         </ModalFooter>
       </Modal>
@@ -78,9 +71,4 @@ const PopUpForm = (props) => {
   );
 };
 
-PopUpForm.propTypes = {
-  buttonLabel: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
-};
-
-export default PopUpForm;
+export default PopUpLogIn;
