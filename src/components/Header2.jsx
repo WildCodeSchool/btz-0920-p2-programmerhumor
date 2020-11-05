@@ -15,6 +15,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedditAlien } from '@fortawesome/free-brands-svg-icons';
 import PopUpSignIn from './PopUpSignIn';
+import PopUpLogIn from './PopUpLogIn';
 
 const Header2 = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,22 +28,22 @@ const Header2 = () => {
         <NavbarBrand href="/">
           <FontAwesomeIcon icon={faRedditAlien} size="4x" color="#fe4602" />
         </NavbarBrand>
-        <div className="col-2">
-          <NavLink>
-            <PopUpSignIn />
-          </NavLink>
-        </div>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <button type="button" className="btn btn-outline-secondary m-2">
-                Log in
-              </button>
+              <NavLink>
+                <PopUpSignIn />
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+                <PopUpLogIn />
+              </NavLink>
             </NavItem>
             <UncontrolledDropdown
               direction="right"
-              className="m-2"
+              className="m-5"
               nav
               inNavbar
             >

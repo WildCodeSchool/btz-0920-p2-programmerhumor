@@ -12,7 +12,7 @@ import {
   ModalFooter,
 } from 'reactstrap';
 
-const PopUpSignIn = (props) => {
+const PopUpLogIn = (props) => {
   const { buttonLabel, className } = props;
 
   const [modal, setModal] = useState(false);
@@ -28,23 +28,14 @@ const PopUpSignIn = (props) => {
   return (
     <div>
       <Button className="m-5" color="outline-info" onClick={toggle}>
-        {buttonLabel} Sign in
+        {buttonLabel} Log in
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle} close={closeBtn}>
-          Sign in
+          Log in
         </ModalHeader>
         <ModalBody>
           <Form>
-            <FormGroup>
-              <Label for="exampleUserName">Name</Label>
-              <Input
-                type="UserName"
-                name="UserName"
-                id="exampleUserName"
-                placeholder=""
-              />
-            </FormGroup>
             <FormGroup>
               <Label for="exampleEmail">Email</Label>
               <Input
@@ -53,9 +44,6 @@ const PopUpSignIn = (props) => {
                 id="exampleEmail"
                 placeholder=""
               />
-              <small id="emailHelp" className="form-text text-muted">
-                We will never share your email with anyone else.
-              </small>
             </FormGroup>
             <FormGroup>
               <Label for="examplePassword">Password</Label>
@@ -65,21 +53,17 @@ const PopUpSignIn = (props) => {
                 id="examplePassword"
                 placeholder=""
               />
-              <small id="passwordHelpBlock" className="form-text text-muted">
-                Your password must be 8-20 characters long, contain letters and
-                numbers.
-              </small>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" /> Agree to terms and conditions
+                <Input type="checkbox" /> Remember me
               </Label>
             </FormGroup>
           </Form>
         </ModalBody>
         <ModalFooter>
           <Button color="outline-info" onClick={toggle}>
-            Sign in
+            Log in
           </Button>{' '}
         </ModalFooter>
       </Modal>
@@ -87,4 +71,4 @@ const PopUpSignIn = (props) => {
   );
 };
 
-export default PopUpSignIn;
+export default PopUpLogIn;
