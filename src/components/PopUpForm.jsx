@@ -1,5 +1,5 @@
 import { useState } from 'react';
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import {
   Button,
   Form,
@@ -78,8 +78,9 @@ const PopUpForm = (props) => {
   );
 };
 
-export default PopUpForm;
+PopUpForm.propTypes = {
+  buttonLabel: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+};
 
-/* </div> <Button>Submit</Button>
-      <Button onClick={Contact.closePopUp}>Annuler</Button>
-    */
+export default PopUpForm;

@@ -3,8 +3,7 @@ import PopUpForm from './PopUpForm';
 import ScrollToTop from './ScrollToTop';
 import './Footer2.css';
 
-// eslint-disable-next-line no-unused-vars
-const Footer2 = (props) => {
+const Footer2 = () => {
   return (
     <div className="fixed-bottom border-top">
       <div className="footer py-2">

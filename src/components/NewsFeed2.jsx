@@ -7,15 +7,16 @@ import {
   CardBody,
   CardTitle,
   Button,
+  Col,
 } from 'reactstrap';
 import './body.css';
 
-const NewsFeed2 = ({ title, body }) => {
+const NewsFeed2 = ({ title, selftext }) => {
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
 
   return (
-    <div className="w-50 h-50 p-3 mx-auto">
+    <Col sm="12" md={{ size: 6, offset: 3 }}>
       <Card>
         <CardImg
           top
@@ -25,9 +26,9 @@ const NewsFeed2 = ({ title, body }) => {
         />
         <CardBody>
           <CardTitle>{title}</CardTitle>
-          <CardText>{body}</CardText>
+          <CardText>{selftext}</CardText>
           <Button
-            className={isLike ? 'like' : 'not-like'}
+            color={isLike ? 'warning' : 'secondary'}
             onClick={() => setIsLike(!isLike)}
           >
             Like
@@ -47,13 +48,13 @@ const NewsFeed2 = ({ title, body }) => {
           )}
         </CardBody>
       </Card>
-    </div>
+    </Col>
   );
 };
 
 NewsFeed2.propTypes = {
   title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
+  selftext: PropTypes.string.isRequired,
 };
 
 export default NewsFeed2;
