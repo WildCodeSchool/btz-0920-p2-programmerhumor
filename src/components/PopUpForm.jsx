@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import {
   Button,
   Form,
@@ -42,7 +42,7 @@ const PopUpForm = (props) => {
                 type="UserName"
                 name="UserName"
                 id="exampleUserName"
-                placeholder="UserName placeholder"
+                placeholder="Name"
               />
             </FormGroup>
             <FormGroup>
@@ -51,7 +51,7 @@ const PopUpForm = (props) => {
                 type="email"
                 name="email"
                 id="exampleEmail"
-                placeholder="with a placeholder"
+                placeholder="Email"
               />
             </FormGroup>
 
@@ -74,8 +74,9 @@ const PopUpForm = (props) => {
   );
 };
 
-export default PopUpForm;
+PopUpForm.propTypes = {
+  buttonLabel: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+};
 
-/* </div> <Button>Submit</Button>
-      <Button onClick={Contact.closePopUp}>Annuler</Button>
-    */
+export default PopUpForm;
