@@ -1,7 +1,7 @@
 import { Button, NavLink } from 'reactstrap';
+import PopUpForm from './PopUpForm';
 import ScrollToTop from './ScrollToTop';
 import './Footer2.css';
-import PopUpForm from './PopUpForm';
 
 // eslint-disable-next-line no-unused-vars
 const Footer2 = (props) => {

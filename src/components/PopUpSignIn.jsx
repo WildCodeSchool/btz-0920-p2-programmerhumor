@@ -12,7 +12,7 @@ import {
   ModalFooter,
 } from 'reactstrap';
 
-const PopUpForm = (props) => {
+const PopUpSignIn = (props) => {
   const { buttonLabel, className } = props;
 
   const [modal, setModal] = useState(false);
@@ -27,22 +27,22 @@ const PopUpForm = (props) => {
 
   return (
     <div>
-      <Button color="#f8f9fa" onClick={toggle}>
-        {buttonLabel}Contact
+      <Button color="outline-secondary" onClick={toggle}>
+        {buttonLabel} Sign in
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle} close={closeBtn}>
-          Contact
+          Sign in
         </ModalHeader>
         <ModalBody>
           <Form>
             <FormGroup>
-              <Label for="exampleUserName">User Name</Label>
+              <Label for="exampleUserName">Name</Label>
               <Input
                 type="UserName"
                 name="UserName"
                 id="exampleUserName"
-                placeholder="UserName placeholder"
+                placeholder=""
               />
             </FormGroup>
             <FormGroup>
@@ -51,21 +51,37 @@ const PopUpForm = (props) => {
                 type="email"
                 name="email"
                 id="exampleEmail"
-                placeholder="with a placeholder"
+                placeholder=""
               />
+              <small id="emailHelp" className="form-text text-muted">
+                We will never share your email with anyone else.
+              </small>
             </FormGroup>
-
             <FormGroup>
-              <Label for="exampleText">Message</Label>
-              <Input type="textarea" name="text" id="exampleText" />
+              <Label for="examplePassword">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="examplePassword"
+                placeholder=""
+              />
+              <small id="passwordHelpBlock" className="form-text text-muted">
+                Your password must be 8-20 characters long, contain letters and
+                numbers.
+              </small>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="checkbox" /> Agree to terms and conditions
+              </Label>
             </FormGroup>
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
-            Submit
+          <Button color="outline-info" onClick={toggle}>
+            Sign in
           </Button>{' '}
-          <Button color="secondary" onClick={toggle}>
+          <Button color="outline-info" onClick={toggle}>
             Cancel
           </Button>
         </ModalFooter>
@@ -74,8 +90,4 @@ const PopUpForm = (props) => {
   );
 };
 
-export default PopUpForm;
-
-/* </div> <Button>Submit</Button>
-      <Button onClick={Contact.closePopUp}>Annuler</Button>
-    */
+export default PopUpSignIn;
