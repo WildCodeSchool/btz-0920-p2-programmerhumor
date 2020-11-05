@@ -11,7 +11,7 @@ import {
 } from 'reactstrap';
 import './body.css';
 
-const NewsFeed2 = ({ title, selftext, url }) => {
+const NewsFeed2 = ({ title, selftext, url, author }) => {
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
 
@@ -21,6 +21,7 @@ const NewsFeed2 = ({ title, selftext, url }) => {
         {url ? (
           <CardImg top width="100%" src={url} alt="Card image cap" />
         ) : null}
+        <CardText>by {author}</CardText>
 
         <CardBody>
           <CardTitle>{title}</CardTitle>
@@ -54,6 +55,7 @@ NewsFeed2.propTypes = {
   title: PropTypes.string.isRequired,
   selftext: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
 };
 
 export default NewsFeed2;
