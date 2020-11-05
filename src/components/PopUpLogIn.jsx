@@ -27,7 +27,11 @@ const PopUpLogIn = (props) => {
 
   return (
     <div>
-      <Button className="m-5" color="outline-info" onClick={toggle}>
+      <Button
+        className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active m-3"
+        color="outline-info"
+        onClick={toggle}
+      >
         {buttonLabel} Log in
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
@@ -62,7 +66,11 @@ const PopUpLogIn = (props) => {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="outline-info" onClick={toggle}>
+          <Button
+            className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
+            color="outline-info"
+            onClick={toggle}
+          >
             Log in
           </Button>{' '}
         </ModalFooter>

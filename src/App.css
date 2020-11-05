@@ -37,6 +37,16 @@
   }
 }
 
-.bg-orange {
+.btn-orange {
+  color: #fe4602 !important;
+  border-color: #fe4602 !important;
+}
+
+.btn-orange:hover {
+  color: white !important;
+  background-color: #fe4602 !important;
+}
+
+.btn-orange:not(:disabled):not(.disabled):active {
   background-color: #fe4602 !important;
 }
