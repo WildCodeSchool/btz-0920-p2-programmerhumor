@@ -17,31 +17,33 @@ const Filter2 = (props) => {
     setCSelected([...cSelected]);
   };
   return (
-    <div>
+    <div className="p-4">
       <ButtonGroup>
         <Button
-          color="primary"
+          className="rounded-circle p-3 m-3"
+          color="outline-info"
           onClick={() => setRSelected(1)}
           active={rSelected === 1}
         >
           Recent +
         </Button>
         <Button
-          color="primary"
+          className="rounded-circle p-3 m-3"
+          color="outline-info"
           onClick={() => setRSelected(2)}
           active={rSelected === 2}
         >
           Like +
         </Button>
         <Button
-          color="primary"
+          className="rounded-circle p-3 m-3"
+          color="outline-info"
           onClick={() => setRSelected(3)}
           active={rSelected === 3}
         >
           Comment +
         </Button>
       </ButtonGroup>
-      <p>Selected: {rSelected}</p>
     </div>
   );
 };

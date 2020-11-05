@@ -27,7 +27,7 @@ const PopUpForm = (props) => {
 
   return (
     <div>
-      <Button color="#f8f9fa" onClick={toggle}>
+      <Button color="outline-info" onClick={toggle}>
         {buttonLabel}Contact
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
@@ -37,12 +37,12 @@ const PopUpForm = (props) => {
         <ModalBody>
           <Form>
             <FormGroup>
-              <Label for="exampleUserName">User Name</Label>
+              <Label for="exampleUserName">Name</Label>
               <Input
                 type="UserName"
                 name="UserName"
                 id="exampleUserName"
-                placeholder="UserName placeholder"
+                placeholder=""
               />
             </FormGroup>
             <FormGroup>
@@ -51,23 +51,27 @@ const PopUpForm = (props) => {
                 type="email"
                 name="email"
                 id="exampleEmail"
-                placeholder="with a placeholder"
+                placeholder=""
               />
+              <small id="emailHelp" className="form-text text-muted">
+                We will never share your email with anyone else.
+              </small>
             </FormGroup>
-
             <FormGroup>
               <Label for="exampleText">Message</Label>
-              <Input type="textarea" name="text" id="exampleText" />
+              <Input
+                type="textarea"
+                name="text"
+                id="exampleText"
+                resize="none"
+              />
             </FormGroup>
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
-            Submit
+          <Button color="outline-info" onClick={toggle}>
+            Send
           </Button>{' '}
-          <Button color="secondary" onClick={toggle}>
-            Cancel
-          </Button>
         </ModalFooter>
       </Modal>
     </div>

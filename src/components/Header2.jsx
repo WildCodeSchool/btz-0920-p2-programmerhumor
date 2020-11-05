@@ -23,10 +23,15 @@ const Header2 = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div className="fixed-top border-bottom w-100">
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">
-          <FontAwesomeIcon icon={faRedditAlien} size="4x" color="#fe4602" />
+          <FontAwesomeIcon
+            icon={faRedditAlien}
+            size="4x"
+            color="#fe4602"
+            className="m-4"
+          />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

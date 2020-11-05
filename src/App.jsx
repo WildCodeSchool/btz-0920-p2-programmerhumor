@@ -25,6 +25,18 @@ const App = () => {
         title={post.title}
         body={post.body}
       />
+      <NewsFeed2 // quelles props?
+        id={post.id}
+        userId={post.userId}
+        title={post.title}
+        body={post.body}
+      />
+      <NewsFeed2 // quelles props?
+        id={post.id}
+        userId={post.userId}
+        title={post.title}
+        body={post.body}
+      />
       <Footer2 />
     </div>
   );
