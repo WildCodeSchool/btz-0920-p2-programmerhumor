@@ -42,7 +42,7 @@ const PopUpForm = (props) => {
                 type="UserName"
                 name="UserName"
                 id="exampleUserName"
-                placeholder="UserName placeholder"
+                placeholder="Name"
               />
             </FormGroup>
             <FormGroup>
@@ -51,7 +51,7 @@ const PopUpForm = (props) => {
                 type="email"
                 name="email"
                 id="exampleEmail"
-                placeholder="with a placeholder"
+                placeholder="Email"
               />
             </FormGroup>
 
@@ -75,7 +75,3 @@ const PopUpForm = (props) => {
 };
 
 export default PopUpForm;
-
-/* </div> <Button>Submit</Button>
-      <Button onClick={Contact.closePopUp}>Annuler</Button>
-    */
