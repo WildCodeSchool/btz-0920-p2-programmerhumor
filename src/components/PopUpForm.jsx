@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import {
   Button,
   Form,
@@ -72,6 +72,11 @@ const PopUpForm = (props) => {
       </Modal>
     </div>
   );
+};
+
+PopUpForm.propTypes = {
+  buttonLabel: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default PopUpForm;
