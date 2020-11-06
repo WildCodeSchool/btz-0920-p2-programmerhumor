@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Button, ButtonGroup } from 'reactstrap';
+import { ButtonGroup } from 'reactstrap';
+import { FaComments, FaHeart, FaHourglass } from 'react-icons/fa';
 
 // eslint-disable-next-line no-unused-vars
 const Filter2 = (props) => {
@@ -18,31 +19,25 @@ const Filter2 = (props) => {
   };
   return (
     <div className="p-4">
-      <ButtonGroup>
-        <Button
-          className="rounded-circle p-3 m-3 btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
-          color="outline-info"
+      <ButtonGroup className="filterbox">
+        <FaComments
+          size="3rem"
+          className="Top Comments"
           onClick={() => setRSelected(1)}
           active={rSelected === 1}
-        >
-          Recent +
-        </Button>
-        <Button
-          className="rounded-circle p-3 m-3 btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
-          color="outline-info"
+        />
+        <FaHeart
+          size="3rem"
+          className="Top Like"
           onClick={() => setRSelected(2)}
           active={rSelected === 2}
-        >
-          Like +
-        </Button>
-        <Button
-          className="rounded-circle p-3 m-3 btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
-          color="outline-info"
+        />
+        <FaHourglass
+          size="3rem"
+          className="Top Date"
           onClick={() => setRSelected(3)}
           active={rSelected === 3}
-        >
-          Comment +
-        </Button>
+        />
       </ButtonGroup>
     </div>
   );
