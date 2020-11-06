@@ -1,12 +1,32 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import { IoIosArrowDropup } from 'react-icons/io';
+import './scrollToTop.css';
 
-function ScrollToTop() {
-  const handleClick = () => {
+const ScrollToTop = () => {
+  const [topScroll, settopScroll] = useState(false);
+
+  const checkScrollTop = () => {
+    if (!topScroll && window.pageYOffset > 400) {
+      settopScroll(true);
+    } else if (topScroll && window.pageYOffset <= 400) {
+      settopScroll(false);
+    }
+  };
+
+  const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  return <FontAwesomeIcon icon={faAngleUp} onClick={handleClick} />;
-}
+  window.addEventListener('scroll', checkScrollTop);
+
+  return (
+    <IoIosArrowDropup
+      size={50}
+      color="#585e68"
+      className={topScroll && 'scrollTopOrange'}
+      onClick={scrollTop}
+    />
+  );
+};
 
 export default ScrollToTop;
