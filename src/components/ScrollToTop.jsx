@@ -23,7 +23,7 @@ const ScrollToTop = () => {
     <IoIosArrowDropup
       size={50}
       color="#585e68"
-      className="scrollTopOrange"
+      className={topScroll && 'scrollTopOrange'}
       onClick={scrollTop}
     />
   );
