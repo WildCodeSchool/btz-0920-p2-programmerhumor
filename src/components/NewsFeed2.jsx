@@ -12,19 +12,20 @@ import {
 import { FaHeart, FaRegComment, FaShare } from 'react-icons/fa';
 import './body.css';
 
-const NewsFeed2 = ({ title, author }) => {
+
+const NewsFeed2 = ({ title, selftext, url, author }) => {
+
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
 
   return (
     <Col sm="12" md={{ size: 6, offset: 3 }}>
       <Card>
-        <CardImg
-          top
-          width="100%"
-          src="https://via.placeholder.com/318x180"
-          alt="Card image cap"
-        />
+        {url ? (
+          <CardImg top width="100%" src={url} alt="Card image cap" />
+        ) : null}
+        <CardText>by {author}</CardText>
+
         <CardBody>
           <CardTitle>{title}</CardTitle>
           <CardText>by {author}</CardText>
@@ -58,6 +59,8 @@ const NewsFeed2 = ({ title, author }) => {
 
 NewsFeed2.propTypes = {
   title: PropTypes.string.isRequired,
+  selftext: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
 };
 

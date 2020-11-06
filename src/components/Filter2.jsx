@@ -20,7 +20,7 @@ const Filter2 = (props) => {
     <div className="p-4">
       <ButtonGroup>
         <Button
-          className="rounded-circle p-3 m-3"
+          className="rounded-circle p-3 m-3 btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
           color="outline-info"
           onClick={() => setRSelected(1)}
           active={rSelected === 1}
@@ -28,7 +28,7 @@ const Filter2 = (props) => {
           Recent +
         </Button>
         <Button
-          className="rounded-circle p-3 m-3"
+          className="rounded-circle p-3 m-3 btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
           color="outline-info"
           onClick={() => setRSelected(2)}
           active={rSelected === 2}
@@ -36,7 +36,7 @@ const Filter2 = (props) => {
           Like +
         </Button>
         <Button
-          className="rounded-circle p-3 m-3"
+          className="rounded-circle p-3 m-3 btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
           color="outline-info"
           onClick={() => setRSelected(3)}
           active={rSelected === 3}
