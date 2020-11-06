@@ -7,6 +7,12 @@
   border-color: #fe4602 !important;
 }
 
+.btn-orange-filter {
+  color: #fe4602 !important;
+  border-color: #fe4602 !important;
+  background-color: white !important;
+}
+
 .btn-orange:hover {
   color: white !important;
   background-color: #fe4602 !important;
