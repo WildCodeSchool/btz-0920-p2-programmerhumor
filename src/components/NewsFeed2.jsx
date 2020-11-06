@@ -12,9 +12,7 @@ import {
 import { FaHeart, FaRegComment, FaShare } from 'react-icons/fa';
 import './body.css';
 
-
-const NewsFeed2 = ({ title, selftext, url, author }) => {
-
+const NewsFeed2 = ({ title, url, author }) => {
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
 
@@ -59,7 +57,6 @@ const NewsFeed2 = ({ title, selftext, url, author }) => {
 
 NewsFeed2.propTypes = {
   title: PropTypes.string.isRequired,
-  selftext: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
 };

@@ -4,7 +4,7 @@ import { Container, Row } from 'reactstrap';
 import Header2 from './components/Header2';
 import Filter2 from './components/Filter2';
 import NewsFeed2 from './components/NewsFeed2';
-import Footer2 from './components/Footer2';
+import Footer from './components/Footer2';
 import './App.css';
 
 const App = () => {
@@ -38,7 +38,7 @@ const App = () => {
           })}
         </Row>
       </Container>
-      <Footer2 />
+      <Footer />
     </div>
   );
 };

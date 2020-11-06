@@ -1,9 +1,9 @@
-import { Button, NavLink } from 'reactstrap';
+import { NavLink } from 'reactstrap';
 import PopUpForm from './PopUpForm';
 import ScrollToTop from './ScrollToTop';
-import './Footer2.css';
+import './Footer.css';
 
-const Footer2 = () => {
+const Footer = () => {
   return (
     <div className="fixed-bottom border-top">
       <div className="footer py-2">
@@ -15,9 +15,9 @@ const Footer2 = () => {
               </NavLink>
             </div>
             <div className="col-4">
-              <Button className="mt-2">
+              <div className="mt-2">
                 <ScrollToTop />
-              </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -26,4 +26,4 @@ const Footer2 = () => {
   );
 };
 
-export default Footer2;
+export default Footer;
