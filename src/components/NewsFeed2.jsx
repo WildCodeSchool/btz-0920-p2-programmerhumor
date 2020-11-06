@@ -21,46 +21,46 @@ const NewsFeed2 = ({ title, url, author }) => {
 
   return (
     <Col sm="12" md={{ size: 8, offset: 2 }}>
-      <Card className="mt-3">
-        {url ? (
+      {url && (
+        <Card className="mt-3">
           <CardImg top width="100%" src={url} alt="Card image cap" />
-        ) : null}
-        <CardBody>
-          <CardTitle>{title}</CardTitle>
-          <CardText>by {author}</CardText>
-          <Button
-            className="mr-2 border border-white"
-            onClick={() => setIsLike(!isLike)}
-            style={{ backgroundColor: 'white' }}
-          >
-            {isLike ? (
-              <FaHeart color="#fe4602 " size="1.5rem" />
-            ) : (
-              <FiHeart color="#585e68" size="1.5rem" />
+          <CardBody>
+            <CardTitle>{title}</CardTitle>
+            <CardText>by {author}</CardText>
+            <Button
+              className="mr-2 border border-white"
+              onClick={() => setIsLike(!isLike)}
+              style={{ backgroundColor: 'white' }}
+            >
+              {isLike ? (
+                <FaHeart color="#fe4602 " size="1.5rem" />
+              ) : (
+                <FiHeart color="#585e68" size="1.5rem" />
+              )}
+            </Button>
+            <Button
+              className="mr-2 border border-white button-outline:focus"
+              onClick={() => {
+                setIsTextArea(!isTextArea);
+              }}
+              style={{ backgroundColor: 'white' }}
+            >
+              <FaRegComment size="1.5rem" color="#585e68" />
+            </Button>
+            <Button
+              className="border border-white"
+              style={{ backgroundColor: 'white' }}
+            >
+              <RiShareForwardLine size="1.5rem" color="#585e68" />
+            </Button>
+            {isTextArea && (
+              <div className="interface-comment">
+                <textarea id="comment-text" />
+              </div>
             )}
-          </Button>
-          <Button
-            className="mr-2 border border-white button-outline:focus"
-            onClick={() => {
-              setIsTextArea(!isTextArea);
-            }}
-            style={{ backgroundColor: 'white' }}
-          >
-            <FaRegComment size="1.5rem" color="#585e68" />
-          </Button>
-          <Button
-            className="border border-white"
-            style={{ backgroundColor: 'white' }}
-          >
-            <RiShareForwardLine size="1.5rem" color="#585e68" />
-          </Button>
-          {isTextArea && (
-            <div className="interface-comment">
-              <textarea id="comment-text" />
-            </div>
-          )}
-        </CardBody>
-      </Card>
+          </CardBody>
+        </Card>
+      )}
     </Col>
   );
 };
