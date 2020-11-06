@@ -5,6 +5,7 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
+  NavbarText,
   NavItem,
   UncontrolledDropdown,
   DropdownToggle,
@@ -47,7 +48,10 @@ const Header2 = () => {
               nav
               inNavbar
             >
-              <DropdownToggle nav caret />
+              <DropdownToggle className="pt-3" nav caret>
+                {' '}
+                Options
+              </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>Log out</DropdownItem>
                 <DropdownItem divider />
@@ -55,6 +59,9 @@ const Header2 = () => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
+          <NavbarText className="color-darkGrey title-font-size pr-3">
+            Reddit Programmer Humor
+          </NavbarText>
         </Collapse>
       </Navbar>
     </div>
