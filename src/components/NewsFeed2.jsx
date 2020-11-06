@@ -9,9 +9,12 @@ import {
   Button,
   Col,
 } from 'reactstrap';
+import { FaHeart, FaRegComment, FaShare } from 'react-icons/fa';
 import './body.css';
 
+
 const NewsFeed2 = ({ title, selftext, url, author }) => {
+
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
 
@@ -25,21 +28,24 @@ const NewsFeed2 = ({ title, selftext, url, author }) => {
 
         <CardBody>
           <CardTitle>{title}</CardTitle>
-          <CardText>{selftext}</CardText>
-          <Button
-            color={isLike ? 'warning' : 'secondary'}
-            onClick={() => setIsLike(!isLike)}
-          >
-            Like
+          <CardText>by {author}</CardText>
+          <Button onClick={() => setIsLike(!isLike)}>
+            {isLike ? (
+              <FaHeart color="red" size="1.5rem" />
+            ) : (
+              <FaHeart color="white" size="1.5rem" />
+            )}
           </Button>
           <Button
             onClick={() => {
               setIsTextArea(!isTextArea);
             }}
           >
-            Comment
+            <FaRegComment size="1.5rem" />
           </Button>
-          <Button>Share</Button>
+          <Button>
+            <FaShare size="1.5rem" />
+          </Button>
           {isTextArea && (
             <div className="interface-comment">
               <textarea id="comment-text" />
