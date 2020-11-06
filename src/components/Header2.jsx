@@ -26,12 +26,7 @@ const Header2 = () => {
     <div className="border-bottom w-100">
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">
-          <FontAwesomeIcon
-            icon={faRedditAlien}
-            size="4x"
-            color="#fe4602"
-            className="m-4"
-          />
+          <FontAwesomeIcon icon={faRedditAlien} size="4x" color="#fe4602" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -48,7 +43,7 @@ const Header2 = () => {
             </NavItem>
             <UncontrolledDropdown
               direction="right"
-              className="m-5"
+              className="m-3"
               nav
               inNavbar
             >
