@@ -9,7 +9,10 @@ import {
   Button,
   Col,
 } from 'reactstrap';
-import { FaHeart, FaRegComment, FaShare } from 'react-icons/fa';
+import { FaHeart, FaRegComment } from 'react-icons/fa';
+import { FiHeart } from 'react-icons/fi';
+import { RiShareForwardLine } from 'react-icons/ri';
+
 import './body.css';
 
 const NewsFeed2 = ({ title, url, author }) => {
@@ -25,23 +28,31 @@ const NewsFeed2 = ({ title, url, author }) => {
         <CardBody>
           <CardTitle>{title}</CardTitle>
           <CardText>by {author}</CardText>
-          <Button className="mr-2" onClick={() => setIsLike(!isLike)}>
+          <Button
+            className="mr-2 border border-white"
+            onClick={() => setIsLike(!isLike)}
+            style={{ backgroundColor: 'white' }}
+          >
             {isLike ? (
               <FaHeart color="#fe4602 " size="1.5rem" />
             ) : (
-              <FaHeart color="white" size="1.5rem" />
+              <FiHeart color="#585e68" size="1.5rem" />
             )}
           </Button>
           <Button
-            className="mr-2"
+            className="mr-2 border border-white button-outline:focus"
             onClick={() => {
               setIsTextArea(!isTextArea);
             }}
+            style={{ backgroundColor: 'white' }}
           >
-            <FaRegComment size="1.5rem" />
+            <FaRegComment size="1.5rem" color="#585e68" />
           </Button>
-          <Button>
-            <FaShare size="1.5rem" />
+          <Button
+            className="border border-white"
+            style={{ backgroundColor: 'white' }}
+          >
+            <RiShareForwardLine size="1.5rem" color="#585e68" />
           </Button>
           {isTextArea && (
             <div className="interface-comment">
