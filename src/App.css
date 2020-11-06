@@ -11,6 +11,7 @@
   color: #fe4602 !important;
   border-color: #fe4602 !important;
   background-color: white !important;
+  border: solid 2px !important;
 }
 
 .btn-orange:hover {
