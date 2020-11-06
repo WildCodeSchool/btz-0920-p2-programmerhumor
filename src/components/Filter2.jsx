@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { ButtonGroup } from 'reactstrap';
-import { FaComments, FaHeart, FaHourglass } from 'react-icons/fa';
+import { Button, ButtonGroup } from 'reactstrap';
+import { FiHeart } from 'react-icons/fi';
+import { FaRegComment } from 'react-icons/fa';
+import { CgTimer } from 'react-icons/cg';
 
-// eslint-disable-next-line no-unused-vars
-const Filter2 = (props) => {
+const Filter2 = () => {
   const [cSelected, setCSelected] = useState([]);
   const [rSelected, setRSelected] = useState(null);
 
@@ -19,25 +20,37 @@ const Filter2 = (props) => {
   };
   return (
     <div className="p-4">
-      <ButtonGroup className="filterbox">
-        <FaComments
-          size="3rem"
-          className="Top Comments"
-          onClick={() => setRSelected(1)}
-          active={rSelected === 1}
-        />
-        <FaHeart
-          size="3rem"
-          className="Top Like"
-          onClick={() => setRSelected(2)}
-          active={rSelected === 2}
-        />
-        <FaHourglass
-          size="3rem"
-          className="Top Date"
-          onClick={() => setRSelected(3)}
-          active={rSelected === 3}
-        />
+      <ButtonGroup className="mt-2">
+        <Button className="mr-3 rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active">
+          <FiHeart
+            size="2.5rem"
+            className="mr-3 mx-auto"
+            onClick={() => setRSelected(1)}
+            active={rSelected === 1}
+          >
+            +
+          </FiHeart>
+        </Button>
+        <Button className="mr-3 rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active">
+          <FaRegComment
+            size="2.5rem"
+            className="mr-3 mx-auto"
+            onClick={() => setRSelected(2)}
+            active={rSelected === 2}
+          >
+            +
+          </FaRegComment>
+        </Button>
+        <Button className="rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active">
+          <CgTimer
+            size="2.5rem"
+            className="mr-3 mx-auto"
+            onClick={() => setRSelected(3)}
+            active={rSelected === 3}
+          >
+            +
+          </CgTimer>
+        </Button>
       </ButtonGroup>
     </div>
   );
