@@ -7,6 +7,15 @@
   border-color: #fe4602 !important;
 }
 
+.btn-orange:hover {
+  color: white !important;
+  background-color: #fe4602 !important;
+}
+
+.btn-orange:not(:disabled):not(.disabled):active {
+  background-color: #fe4602 !important;
+}
+
 .btn-orange-filter {
   color: #fe4602 !important;
   border-color: #fe4602 !important;
@@ -14,12 +23,12 @@
   border: solid 2px !important;
 }
 
-.btn-orange:hover {
+.btn-orange-filter:hover {
   color: white !important;
   background-color: #fe4602 !important;
 }
 
-.btn-orange:not(:disabled):not(.disabled):active {
+.btn-orange-filter:not(:disabled):not(.disabled):active {
   background-color: #fe4602 !important;
 }
 
