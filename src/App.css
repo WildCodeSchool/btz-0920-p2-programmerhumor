@@ -23,3 +23,8 @@
 .title-font-size {
   font-size: 1.2rem !important;
 }
+
+.button-outline:focus {
+  outline: none !important;
+  outline-offset: none !important;
+}
