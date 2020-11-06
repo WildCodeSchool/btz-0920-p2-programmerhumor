@@ -27,7 +27,11 @@ const PopUpSignIn = (props) => {
 
   return (
     <div>
-      <Button className="bg-orange m-5" color="outline-info" onClick={toggle}>
+      <Button
+        className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active m-3"
+        color="outline-info"
+        onClick={toggle}
+      >
         {buttonLabel} Sign in
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
@@ -78,7 +82,11 @@ const PopUpSignIn = (props) => {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="outline-info" onClick={toggle}>
+          <Button
+            className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
+            color="outline-info"
+            onClick={toggle}
+          >
             Sign in
           </Button>{' '}
         </ModalFooter>

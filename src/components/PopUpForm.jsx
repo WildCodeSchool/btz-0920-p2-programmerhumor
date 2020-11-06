@@ -27,12 +27,16 @@ const PopUpForm = (props) => {
 
   return (
     <div>
-      <Button color="outline-info" onClick={toggle}>
-        {buttonLabel}Contact
+      <Button
+        className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
+        color="outline-info"
+        onClick={toggle}
+      >
+        {buttonLabel}Contact us
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle} close={closeBtn}>
-          Contact
+          Contact us
         </ModalHeader>
         <ModalBody>
           <Form>
@@ -69,7 +73,11 @@ const PopUpForm = (props) => {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="outline-info" onClick={toggle}>
+          <Button
+            className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
+            color="outline-info"
+            onClick={toggle}
+          >
             Send
           </Button>{' '}
         </ModalFooter>
