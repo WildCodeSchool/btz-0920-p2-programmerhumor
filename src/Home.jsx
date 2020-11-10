@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 import { Container, Row } from 'reactstrap';
 import Header2 from './components/Header2';
 import Filter2 from './components/Filter2';
 import NewsFeed2 from './components/NewsFeed2';
 import Footer from './components/Footer2';
-import './App.css';
+import './Home.css';
 
-const App = () => {
+const Home = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
+    Axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
       setPosts(
         res.data.data.children.map((child) => {
           return child.data;
@@ -31,7 +31,7 @@ const App = () => {
               <NewsFeed2
                 title={post.title}
                 selftext={post.selftext}
-                author={post.author_fullname}
+                author={post.author}
                 url={post.url_overridden_by_dest}
               />
             );
@@ -43,4 +43,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;

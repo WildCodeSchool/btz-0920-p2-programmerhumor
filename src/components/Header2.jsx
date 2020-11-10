@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -26,7 +27,7 @@ const Header2 = () => {
   return (
     <div className="border-bottom w-100">
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">
+        <NavbarBrand tag={Link} to="/">
           <FontAwesomeIcon icon={faRedditAlien} size="4x" color="#fe4602" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardImg,
@@ -12,7 +13,6 @@ import {
 import { FaHeart, FaRegComment } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
 import { RiShareForwardLine } from 'react-icons/ri';
-
 import './body.css';
 
 const NewsFeed2 = ({ title, url, author }) => {
@@ -22,7 +22,7 @@ const NewsFeed2 = ({ title, url, author }) => {
   return (
     <Col sm="12" md={{ size: 8, offset: 2 }}>
       {url && (
-        <Card className="mt-3">
+        <Card tag={Link} to="/Article" className="mt-3">
           <CardImg top width="100%" src={url} alt="Card image cap" />
           <CardBody>
             <CardTitle>{title}</CardTitle>
