@@ -15,14 +15,14 @@ import { FiHeart } from 'react-icons/fi';
 import { RiShareForwardLine } from 'react-icons/ri';
 import './body.css';
 
-const NewsFeed2 = ({ title, url, author }) => {
+const NewsFeed2 = ({ title, url, author, id }) => {
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
 
   return (
     <Col sm="12" md={{ size: 8, offset: 2 }}>
       {url && (
-        <Card tag={Link} to="/Article" className="mt-3">
+        <Card tag={Link} to={`/Article/${id}`} className="mt-3">
           <CardImg top width="100%" src={url} alt="Card image cap" />
           <CardBody>
             <CardTitle>{title}</CardTitle>
@@ -66,6 +66,7 @@ const NewsFeed2 = ({ title, url, author }) => {
 };
 
 NewsFeed2.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,

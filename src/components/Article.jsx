@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
+// import PropTypes from 'prop-types';
 import {
   Card,
   CardImg,
@@ -14,12 +15,12 @@ import { FiHeart } from 'react-icons/fi';
 import { RiShareForwardLine } from 'react-icons/ri';
 
 const Article = () => {
-  const [post, setPosts] = useState({});
+  const [posts, setPosts] = useState([]);
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
 
   useEffect(() => {
-    Axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
+    Axios.get(`https://www.reddit.com/r/programmerhumor.json`).then((res) => {
       setPosts(
         res.data.data.children.map((child) => {
           return child.data;
@@ -31,10 +32,10 @@ const Article = () => {
   return (
     <Col>
       <Card>
-        <CardImg top width="100%" src={post.url} alt="Card image cap" />
+        <CardImg top width="100%" src={posts.url} alt="Card image cap" />
         <CardBody>
-          <CardTitle>{post.title}</CardTitle>
-          <CardText>{post.author}</CardText>
+          <CardTitle>{posts.title}</CardTitle>
+          <CardText>{posts.author}</CardText>
           <Button
             className="mr-2 border border-white"
             onClick={() => setIsLike(!isLike)}
@@ -87,5 +88,10 @@ const Article = () => {
     </Col>
   );
 };
+/* Article.propTypes = {
+  id: PropTypes.string.isRequired,
+  match: PropTypes.string.isRequired,
+  params: PropTypes.string.isRequired,
+}; */
 
 export default Article;
