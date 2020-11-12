@@ -28,8 +28,10 @@ const NewsFeed2 = ({ title, url, author, id, permalink }) => {
   return (
     <Col sm="12" md={{ size: 8, offset: 2 }}>
       {url && (
-        <Card tag={Link} to={`/Article/${id}/${slugTitle}`} className="mt-3">
-          <CardImg top width="100%" src={url} alt="Card image cap" />
+        <Card className="mt-3">
+          <Link to={`/Article/${id}/${slugTitle}`}>
+            <CardImg top width="100%" src={url} alt="Card image cap" />
+          </Link>
           <CardBody>
             <CardTitle>{title}</CardTitle>
             <CardText>by {author}</CardText>

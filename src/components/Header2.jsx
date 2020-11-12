@@ -60,8 +60,15 @@ const Header2 = () => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText className="color-darkGrey title-font-size pr-3">
-            Reddit Programmer Humor
+          <NavbarText>
+            <a
+              href="https://www.reddit.com/r/ProgrammerHumor/"
+              target="blank"
+              className="text-decoration-none color-darkGrey title-font-size pr-3"
+            >
+              {' '}
+              Reddit Programmer Humor
+            </a>
           </NavbarText>
         </Collapse>
       </Navbar>

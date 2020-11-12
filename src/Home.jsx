@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
-import { Row } from 'reactstrap';
+import { Row, Col, Spinner } from 'reactstrap';
 import Filter2 from './components/Filter2';
 import NewsFeed2 from './components/NewsFeed2';
 import './Home.css';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     Axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
@@ -15,6 +16,7 @@ const Home = () => {
           return child.data;
         })
       );
+      setLoading(false);
     });
   }, []);
 
@@ -22,18 +24,24 @@ const Home = () => {
     <div className="App">
       <Filter2 />
       <Row>
-        {posts.map((post) => {
-          return (
-            <NewsFeed2
-              id={post.id}
-              title={post.title}
-              selftext={post.selftext}
-              author={post.author}
-              url={post.url_overridden_by_dest}
-              permalink={post.permalink}
-            />
-          );
-        })}
+        {loading ? (
+          <Col className="text-center">
+            <Spinner className="spinner" size="xl" />
+          </Col>
+        ) : (
+          posts.map((post) => {
+            return (
+              <NewsFeed2
+                id={post.id}
+                title={post.title}
+                selftext={post.selftext}
+                author={post.author}
+                url={post.url_overridden_by_dest}
+                permalink={post.permalink}
+              />
+            );
+          })
+        )}
       </Row>
     </div>
   );
