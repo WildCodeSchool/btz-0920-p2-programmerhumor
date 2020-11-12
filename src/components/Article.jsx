@@ -13,19 +13,19 @@ import {
 import { FaHeart, FaRegComment } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
 import { RiShareForwardLine } from 'react-icons/ri';
+import { useParams } from 'react-router-dom';
 
 const Article = () => {
   const [posts, setPosts] = useState([]);
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
+  const { id, title } = useParams();
 
   useEffect(() => {
-    Axios.get(`https://www.reddit.com/r/programmerhumor.json`).then((res) => {
-      setPosts(
-        res.data.data.children.map((child) => {
-          return child.data;
-        })
-      );
+    Axios.get(
+      `https://www.reddit.com/r/programmerhumor/comments/${id}/${title}.json`
+    ).then((res) => {
+      setPosts(res.data[0].data.children[0].data);
     });
   }, []);
 

@@ -30,6 +30,7 @@ const Home = () => {
               selftext={post.selftext}
               author={post.author}
               url={post.url_overridden_by_dest}
+              permalink={post.permalink}
             />
           );
         })}
