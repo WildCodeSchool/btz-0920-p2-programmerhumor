@@ -8,13 +8,13 @@ const Footer = () => {
     <div className="fixed-bottom border-top">
       <div className="footer py-2">
         <div className="container">
-          <div className="row justify-content-around">
-            <div className="col-4">
+          <div className="d-flex justify-content-around">
+            <div className="col-4 text-center">
               <NavLink>
                 <PopUpForm />
               </NavLink>
             </div>
-            <div className="col-4">
+            <div className="col-4 text-center">
               <div className="mt-2">
                 <ScrollToTop />
               </div>
