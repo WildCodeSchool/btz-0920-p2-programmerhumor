@@ -53,7 +53,6 @@ const NewsFeed2 = ({ title, url, author, id, permalink, media }) => {
             <CardTitle>{title}</CardTitle>
             <CardText>by {author}</CardText>
             <CardText>{msg}</CardText>
-
             <Button
               className="mr-2 border border-white"
               onClick={() => setIsLike(!isLike)}
@@ -102,6 +101,7 @@ NewsFeed2.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
   permalink: PropTypes.string.isRequired,
   media: PropTypes.string.isRequired,
 };
