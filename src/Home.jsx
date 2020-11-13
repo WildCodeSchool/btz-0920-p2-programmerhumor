@@ -10,28 +10,29 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   Axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
+  //     setPosts(
+  //       res.data.data.children.map((child) => {
+  //         return child.data;
+  //       })
+  //     );
+  //     setLoading(false);
+  //   });
+  // }, []);
+
   useEffect(() => {
     Axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
       setPosts(
-        res.data.data.children.map((child) => {
-          return child.data;
-        })
+        res.data.data.children
+          .sort((a, b) => a.score - b.score)
+          .map((child) => {
+            return child.data;
+          })
       );
       setLoading(false);
     });
   }, []);
-
-  // useEffect(() => {
-  //   Axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
-  //     setPosts(
-  //       res.data.data.children
-  //         .sort((a, b) => a.score - b.score)
-  //         .map((child) => {
-  //           return child.data;
-  //         })
-  //     );
-  //   });
-  // }, []);
   // const tablscore = posts.map((post) => {
   //   return post.score;
   // });
@@ -81,6 +82,8 @@ const Home = () => {
   // }
   // const fintab = sortPost(sortedArray, totalTabl);
   // console.log(fintab);
+  // eslint-disable-next-line no-console
+  console.log(posts);
   return (
     <div className="App">
       <Filter2 />
@@ -99,6 +102,7 @@ const Home = () => {
                 author={post.author}
                 url={post.url_overridden_by_dest}
                 permalink={post.permalink}
+                score={post.score}
               />
             );
           })
