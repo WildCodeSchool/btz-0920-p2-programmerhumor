@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -26,7 +27,7 @@ const Header2 = () => {
   return (
     <div className="border-bottom w-100">
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">
+        <NavbarBrand tag={Link} to="/">
           <FontAwesomeIcon icon={faRedditAlien} size="4x" color="#fe4602" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -59,8 +60,15 @@ const Header2 = () => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText className="color-darkGrey title-font-size pr-3">
-            Reddit Programmer Humor
+          <NavbarText>
+            <a
+              href="https://www.reddit.com/r/ProgrammerHumor/"
+              target="blank"
+              className="text-decoration-none color-darkGrey title-font-size pr-3"
+            >
+              {' '}
+              Reddit Programmer Humor
+            </a>
           </NavbarText>
         </Collapse>
       </Navbar>

@@ -1,37 +1,37 @@
 /* eslint-disable no-plusplus */
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Container, Row } from 'reactstrap';
-import Header2 from './components/Header2';
+import Axios from 'axios';
+import { Row, Col, Spinner } from 'reactstrap';
 import Filter2 from './components/Filter2';
 import NewsFeed2 from './components/NewsFeed2';
-import Footer from './components/Footer2';
-import './App.css';
+import './Home.css';
 
-const App = () => {
+const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
+    Axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
       setPosts(
         res.data.data.children.map((child) => {
           return child.data;
         })
       );
+      setLoading(false);
     });
   }, []);
 
-  useEffect(() => {
-    axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
-      setPosts(
-        res.data.data.children
-          .sort((a, b) => a.score - b.score)
-          .map((child) => {
-            return child.data;
-          })
-      );
-    });
-  }, []);
+  // useEffect(() => {
+  //   Axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
+  //     setPosts(
+  //       res.data.data.children
+  //         .sort((a, b) => a.score - b.score)
+  //         .map((child) => {
+  //           return child.data;
+  //         })
+  //     );
+  //   });
+  // }, []);
   // const tablscore = posts.map((post) => {
   //   return post.score;
   // });
@@ -83,25 +83,29 @@ const App = () => {
   // console.log(fintab);
   return (
     <div className="App">
-      <Header2 />
       <Filter2 />
-      <Container>
-        <Row>
-          {posts.map((post) => {
+      <Row>
+        {loading ? (
+          <Col className="text-center">
+            <Spinner className="spinner" size="xl" />
+          </Col>
+        ) : (
+          posts.map((post) => {
             return (
               <NewsFeed2
+                id={post.id}
                 title={post.title}
                 selftext={post.selftext}
-                author={post.author_fullname}
+                author={post.author}
                 url={post.url_overridden_by_dest}
+                permalink={post.permalink}
               />
             );
-          })}
-        </Row>
-      </Container>
-      <Footer />
+          })
+        )}
+      </Row>
     </div>
   );
 };
 
-export default App;
+export default Home;

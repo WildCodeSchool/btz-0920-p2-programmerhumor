@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardImg,
@@ -12,18 +13,25 @@ import {
 import { FaHeart, FaRegComment } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
 import { RiShareForwardLine } from 'react-icons/ri';
-
 import './body.css';
 
-const NewsFeed2 = ({ title, url, author, score }) => {
+const NewsFeed2 = ({ title, url, author, id, permalink, score }) => {
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
+  const [slugTitle, setSlugTitle] = useState(' ');
+
+  useEffect(() => {
+    const splited = permalink.split('/');
+    setSlugTitle(splited[5]);
+  }, []);
 
   return (
     <Col sm="12" md={{ size: 8, offset: 2 }}>
       {url && (
         <Card className="mt-3">
-          <CardImg top width="100%" src={url} alt="Card image cap" />
+          <Link to={`/Article/${id}/${slugTitle}`}>
+            <CardImg top width="100%" src={url} alt="Card image cap" />
+          </Link>
           <CardBody>
             <CardTitle>{title}</CardTitle>
             <CardText>by {author}</CardText>
@@ -67,10 +75,12 @@ const NewsFeed2 = ({ title, url, author, score }) => {
 };
 
 NewsFeed2.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
+  permalink: PropTypes.string.isRequired,
 };
 
 export default NewsFeed2;

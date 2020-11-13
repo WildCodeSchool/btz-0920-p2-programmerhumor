@@ -2,6 +2,8 @@
   text-align: center;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Anton');
+
 .btn-orange {
   color: #fe4602 !important;
   border-color: #fe4602 !important;
@@ -43,4 +45,8 @@
 .button-outline:focus {
   outline: none !important;
   outline-offset: none !important;
+}
+
+.spinner {
+  color: #fe4602 !important;
 }
