@@ -101,7 +101,6 @@ NewsFeed2.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
   permalink: PropTypes.string.isRequired,
   media: PropTypes.string.isRequired,
 };
