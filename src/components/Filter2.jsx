@@ -18,6 +18,20 @@ const Filter2 = () => {
     }
     setCSelected([...cSelected]);
   };
+  // useEffect(() => {
+  //   axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
+  //     setPosts(
+  //       res.data.data.children
+  //         .sort((a, b) => a.score - b.score)
+  //         .map((child) => {
+  //           return child.data;
+  //         })
+  //     );
+  //   });
+  // }, []);
+
+  // const [posts, setPosts] = useState([]);
+
   return (
     <div className="p-4">
       <ButtonGroup className="mt-2">

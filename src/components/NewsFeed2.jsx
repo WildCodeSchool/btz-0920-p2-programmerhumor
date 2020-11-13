@@ -15,7 +15,7 @@ import { FiHeart } from 'react-icons/fi';
 import { RiShareForwardLine } from 'react-icons/ri';
 import './body.css';
 
-const NewsFeed2 = ({ title, url, author, id, permalink }) => {
+const NewsFeed2 = ({ title, url, author, id, permalink, score }) => {
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
   const [slugTitle, setSlugTitle] = useState(' ');
@@ -35,6 +35,7 @@ const NewsFeed2 = ({ title, url, author, id, permalink }) => {
           <CardBody>
             <CardTitle>{title}</CardTitle>
             <CardText>by {author}</CardText>
+            <CardText>score: {score}</CardText>
             <Button
               className="mr-2 border border-white"
               onClick={() => setIsLike(!isLike)}
@@ -78,6 +79,7 @@ NewsFeed2.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
   permalink: PropTypes.string.isRequired,
 };
 
