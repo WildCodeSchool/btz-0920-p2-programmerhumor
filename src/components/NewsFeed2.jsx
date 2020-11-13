@@ -15,26 +15,45 @@ import { FiHeart } from 'react-icons/fi';
 import { RiShareForwardLine } from 'react-icons/ri';
 import './body.css';
 
-const NewsFeed2 = ({ title, url, author, id, permalink }) => {
+const NewsFeed2 = ({ title, url, author, id, permalink, media }) => {
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
   const [slugTitle, setSlugTitle] = useState(' ');
+  const [msg, setMsg] = useState('');
+  const [isVideo, setIsVideo] = useState(false);
+
+  const handleChange = (e) => {
+    setMsg(e.target.value);
+  };
 
   useEffect(() => {
     const splited = permalink.split('/');
     setSlugTitle(splited[5]);
   }, []);
 
+  useEffect(() => {
+    if (media) setIsVideo(media.split('.').pop() === 'mp4');
+  }, [media]);
+
   return (
     <Col sm="12" md={{ size: 8, offset: 2 }}>
       {url && (
         <Card className="mt-3">
-          <Link to={`/Article/${id}/${slugTitle}`}>
-            <CardImg top width="100%" src={url} alt="Card image cap" />
-          </Link>
+          {!isVideo && (
+            <Link to={`/Article/${id}/${slugTitle}`}>
+              <CardImg top width="100%" src={url} alt="Card image cap" />
+            </Link>
+          )}
+          {isVideo && (
+            <video autoPlay="true" loop width="100%" src={media}>
+              <track default kind="captions" />
+            </video>
+          )}
           <CardBody>
             <CardTitle>{title}</CardTitle>
             <CardText>by {author}</CardText>
+            <CardText>{msg}</CardText>
+
             <Button
               className="mr-2 border border-white"
               onClick={() => setIsLike(!isLike)}
@@ -63,7 +82,12 @@ const NewsFeed2 = ({ title, url, author, id, permalink }) => {
             </Button>
             {isTextArea && (
               <div className="interface-comment">
-                <textarea id="comment-text" />
+                <input
+                  id="comment-text"
+                  type="text"
+                  value={msg}
+                  onChange={handleChange}
+                />
               </div>
             )}
           </CardBody>
@@ -79,6 +103,7 @@ NewsFeed2.propTypes = {
   url: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   permalink: PropTypes.string.isRequired,
+  media: PropTypes.string.isRequired,
 };
 
 export default NewsFeed2;

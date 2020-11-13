@@ -45,17 +45,9 @@ const Article = () => {
           style={{ backgroundColor: 'white' }}
         >
           {isLike ? (
-            <FaHeart
-              color="#FE4602
-"
-              size="1.5rem"
-            />
+            <FaHeart color="#FE4602" size="1.5rem" />
           ) : (
-            <FiHeart
-              color="#585E68
-"
-              size="1.5rem"
-            />
+            <FiHeart color="#585E68" size="1.5rem" />
           )}
         </Button>
         <Button
@@ -65,21 +57,13 @@ const Article = () => {
           }}
           style={{ backgroundColor: 'white' }}
         >
-          <FaRegComment
-            size="1.5rem"
-            color="#585E68
-"
-          />
+          <FaRegComment size="1.5rem" color="#585E68" />
         </Button>
         <Button
           className="border border-white"
           style={{ backgroundColor: 'white' }}
         >
-          <RiShareForwardLine
-            size="1.5rem"
-            color="#585E68
-"
-          />
+          <RiShareForwardLine size="1.5rem" color="#585E68" />
         </Button>
         {isTextArea && (
           <div className="interface-comment">
