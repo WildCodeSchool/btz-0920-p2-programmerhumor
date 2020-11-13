@@ -54,7 +54,7 @@ const NewsFeed2 = ({ title, url, author, id, permalink, media }) => {
             <CardText>by {author}</CardText>
             <CardText>{msg}</CardText>
             <Button
-              className="mr-2 border border-white"
+              className="mr-2 border-white"
               onClick={() => setIsLike(!isLike)}
               style={{ backgroundColor: 'white' }}
             >
@@ -65,7 +65,7 @@ const NewsFeed2 = ({ title, url, author, id, permalink, media }) => {
               )}
             </Button>
             <Button
-              className="mr-2 border border-white button-outline:focus"
+              className="mr-2 border-white button-outline:focus"
               onClick={() => {
                 setIsTextArea(!isTextArea);
               }}
@@ -74,7 +74,7 @@ const NewsFeed2 = ({ title, url, author, id, permalink, media }) => {
               <FaRegComment size="1.5rem" color="#585e68" />
             </Button>
             <Button
-              className="border border-white"
+              className="border-white"
               style={{ backgroundColor: 'white' }}
             >
               <RiShareForwardLine size="1.5rem" color="#585e68" />

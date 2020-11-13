@@ -22,6 +22,11 @@ const Article = () => {
   const [isTextArea, setIsTextArea] = useState(false);
   const { id, title } = useParams();
   const [loading, setLoading] = useState(true);
+  const [msg, setMsg] = useState('');
+
+  const handleChange = (e) => {
+    setMsg(e.target.value);
+  };
 
   useEffect(() => {
     Axios.get(
@@ -48,6 +53,7 @@ const Article = () => {
             {posts.title}
           </CardTitle>
           <CardText className="font-weight-bold">{posts.author}</CardText>
+          <CardText>{msg}</CardText>
           <Button
             className="mr-2 border-white"
             onClick={() => setIsLike(!isLike)}
@@ -73,7 +79,12 @@ const Article = () => {
           </Button>
           {isTextArea && (
             <div className="interface-comment">
-              <textarea id="comment-text" />
+              <input
+                id="comment-text"
+                type="text"
+                value={msg}
+                onChange={handleChange}
+              />
             </div>
           )}
         </CardBody>
