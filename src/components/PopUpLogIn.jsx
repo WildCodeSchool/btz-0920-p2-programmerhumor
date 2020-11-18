@@ -25,7 +25,7 @@ const PopUpLogIn = ({ buttonLabel, className }) => {
     <div>
       <Button
         className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active m-3"
-        color="outline-info"
+        color="outline-light"
         onClick={toggle}
       >
         {buttonLabel} Log in

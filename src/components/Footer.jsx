@@ -13,7 +13,7 @@ const Footer = () => {
           </NavLink>
         </div>
         <div className="col-4 text-center">
-          <div className="mt-2">
+          <div>
             <ScrollToTop />
           </div>
         </div>

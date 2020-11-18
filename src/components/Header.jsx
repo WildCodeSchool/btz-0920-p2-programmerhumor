@@ -63,7 +63,7 @@ const Header = () => {
             <a
               href="https://www.reddit.com/r/ProgrammerHumor/"
               target="blank"
-              className="text-decoration-none color-darkGrey title-font-size pr-3"
+              className="text-decoration-none color-darkGrey title-font-size font-weight-bold pr-3 d-none d-md-block"
             >
               {' '}
               Reddit Programmer Humor
