@@ -52,10 +52,10 @@ const Article = () => {
           <CardTitle className="font-weight-bold text-uppercase">
             {posts.title}
           </CardTitle>
-          <CardText className="font-weight-bold">{posts.author}</CardText>
+          <CardText className="font-weight-bold">by {posts.author}</CardText>
           <CardText>{msg}</CardText>
           <Button
-            className="mr-2 border-white"
+            className="mr-2 border-white btn-outline-light"
             onClick={() => setIsLike(!isLike)}
             style={{ backgroundColor: 'white' }}
           >
@@ -66,7 +66,7 @@ const Article = () => {
             )}
           </Button>
           <Button
-            className="mr-2 border-white button-outline:focus"
+            className="mr-2 border-white btn-outline-light"
             onClick={() => {
               setIsTextArea(!isTextArea);
             }}
@@ -74,7 +74,10 @@ const Article = () => {
           >
             <FaRegComment size="1.5rem" color="#585E68" />
           </Button>
-          <Button className="border-white" style={{ backgroundColor: 'white' }}>
+          <Button
+            className="border-white btn-outline-light"
+            style={{ backgroundColor: 'white' }}
+          >
             <RiShareForwardLine size="1.5rem" color="#585E68" />
           </Button>
           {isTextArea && (
