@@ -4,7 +4,7 @@ import { FiHeart } from 'react-icons/fi';
 import { FaRegComment } from 'react-icons/fa';
 import { CgTimer } from 'react-icons/cg';
 
-const Filter2 = () => {
+const Filter = () => {
   const [cSelected, setCSelected] = useState([]);
   const [rSelected, setRSelected] = useState(null);
 
@@ -70,4 +70,4 @@ const Filter2 = () => {
   );
 };
 
-export default Filter2;
+export default Filter;

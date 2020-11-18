@@ -19,9 +19,8 @@ import { faRedditAlien } from '@fortawesome/free-brands-svg-icons';
 import PopUpSignIn from './PopUpSignIn';
 import PopUpLogIn from './PopUpLogIn';
 
-const Header2 = () => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
 
   return (
@@ -76,4 +75,4 @@ const Header2 = () => {
   );
 };
 
-export default Header2;
+export default Header;
