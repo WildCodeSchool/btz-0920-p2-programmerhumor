@@ -15,7 +15,7 @@ import { FiHeart } from 'react-icons/fi';
 import { RiShareForwardLine } from 'react-icons/ri';
 import './body.css';
 
-const NewsFeed2 = ({ title, url, author, id, permalink, media }) => {
+const NewsFeed = ({ title, url, author, id, permalink, media }) => {
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
   const [slugTitle, setSlugTitle] = useState(' ');
@@ -96,7 +96,7 @@ const NewsFeed2 = ({ title, url, author, id, permalink, media }) => {
   );
 };
 
-NewsFeed2.propTypes = {
+NewsFeed.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
@@ -105,4 +105,4 @@ NewsFeed2.propTypes = {
   media: PropTypes.string.isRequired,
 };
 
-export default NewsFeed2;
+export default NewsFeed;
