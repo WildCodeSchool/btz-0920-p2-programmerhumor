@@ -51,6 +51,7 @@ const Home = () => {
                 url={post.url_overridden_by_dest}
                 permalink={post.permalink}
                 media={post.media?.reddit_video?.fallback_url}
+                key={post.id}
               />
             );
           })
