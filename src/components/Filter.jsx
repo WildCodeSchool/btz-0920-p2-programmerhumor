@@ -6,7 +6,7 @@ import { CgTimer } from 'react-icons/cg';
 
 const Filter = () => {
   const [cSelected, setCSelected] = useState([]);
-  const [rSelected, setRSelected] = useState(null);
+  const [rSelected, setRSelected] = useState(false);
 
   // eslint-disable-next-line no-unused-vars
   const onCheckboxBtnClick = (selected) => {
@@ -40,7 +40,7 @@ const Filter = () => {
             size="2.5rem"
             className="mr-3 mx-auto"
             onClick={() => setRSelected(1)}
-            active={rSelected === 1}
+            active={rSelected ? 1 : undefined}
           >
             +
           </FiHeart>
@@ -50,7 +50,7 @@ const Filter = () => {
             size="2.5rem"
             className="mr-3 mx-auto"
             onClick={() => setRSelected(2)}
-            active={rSelected === 2}
+            active={rSelected ? 2 : undefined}
           >
             +
           </FaRegComment>
@@ -60,7 +60,7 @@ const Filter = () => {
             size="2.5rem"
             className="mr-3 mx-auto"
             onClick={() => setRSelected(3)}
-            active={rSelected === 3}
+            active={rSelected ? 3 : undefined}
           >
             +
           </CgTimer>
