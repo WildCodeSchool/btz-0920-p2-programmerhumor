@@ -91,9 +91,14 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
   );
 };
 
+PopUpSignIn.defaultProps = {
+  buttonLabel: ' ',
+  className: ' ',
+};
+
 PopUpSignIn.propTypes = {
-  buttonLabel: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  buttonLabel: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default PopUpSignIn;
