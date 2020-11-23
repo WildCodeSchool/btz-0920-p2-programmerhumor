@@ -82,9 +82,14 @@ const PopUpForm = ({ buttonLabel, className }) => {
   );
 };
 
+PopUpForm.defaultProps = {
+  buttonLabel: ' ',
+  className: ' ',
+};
+
 PopUpForm.propTypes = {
-  buttonLabel: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  buttonLabel: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default PopUpForm;

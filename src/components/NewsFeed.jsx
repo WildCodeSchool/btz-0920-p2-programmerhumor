@@ -37,7 +37,7 @@ const NewsFeed = ({ title, url, author, id, permalink, media }) => {
 
   return (
     <Col sm="12" md={{ size: 8, offset: 2 }}>
-      {url && (
+      {url !== ' ' && (
         <Card className="mt-3">
           {!isVideo && (
             <Link to={`/Article/${id}/${slugTitle}`}>
@@ -96,13 +96,18 @@ const NewsFeed = ({ title, url, author, id, permalink, media }) => {
   );
 };
 
+NewsFeed.defaultProps = {
+  url: ' ',
+  media: ' ',
+};
+
 NewsFeed.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
   author: PropTypes.string.isRequired,
   permalink: PropTypes.string.isRequired,
-  media: PropTypes.string.isRequired,
+  media: PropTypes.string,
 };
 
 export default NewsFeed;
