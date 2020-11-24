@@ -1,5 +1,5 @@
 import { useState } from 'react';
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import {
   Button,
   Form,
@@ -12,13 +12,9 @@ import {
   ModalFooter,
 } from 'reactstrap';
 
-const PopUpSignIn = (props) => {
-  const { buttonLabel, className } = props;
-
+const PopUpSignIn = ({ buttonLabel, className }) => {
   const [modal, setModal] = useState(false);
-
   const toggle = () => setModal(!modal);
-
   const closeBtn = (
     <button type="button" className="close" onClick={toggle}>
       &times;
@@ -29,7 +25,7 @@ const PopUpSignIn = (props) => {
     <div>
       <Button
         className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active m-3"
-        color="outline-info"
+        color="outline-light"
         onClick={toggle}
       >
         {buttonLabel} Sign in
@@ -93,6 +89,16 @@ const PopUpSignIn = (props) => {
       </Modal>
     </div>
   );
+};
+
+PopUpSignIn.defaultProps = {
+  buttonLabel: ' ',
+  className: ' ',
+};
+
+PopUpSignIn.propTypes = {
+  buttonLabel: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default PopUpSignIn;

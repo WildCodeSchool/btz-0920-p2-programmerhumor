@@ -15,29 +15,57 @@ import { FiHeart } from 'react-icons/fi';
 import { RiShareForwardLine } from 'react-icons/ri';
 import './body.css';
 
-const NewsFeed2 = ({ title, url, author, id, permalink, score }) => {
+const NewsFeed = ({
+  title,
+  url,
+  author,
+  id,
+  permalink,
+  media,
+  score,
+  numComments,
+}) => {
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
   const [slugTitle, setSlugTitle] = useState(' ');
+  const [msg, setMsg] = useState('');
+  const [isVideo, setIsVideo] = useState(false);
+
+  const handleChange = (e) => {
+    setMsg(e.target.value);
+  };
 
   useEffect(() => {
     const splited = permalink.split('/');
     setSlugTitle(splited[5]);
   }, []);
 
+  useEffect(() => {
+    if (media) setIsVideo(media.split('.').pop() === 'mp4');
+  }, [media]);
+
   return (
     <Col sm="12" md={{ size: 8, offset: 2 }}>
-      {url && (
+      {url !== ' ' && (
         <Card className="mt-3">
-          <Link to={`/Article/${id}/${slugTitle}`}>
-            <CardImg top width="100%" src={url} alt="Card image cap" />
-          </Link>
+          {!isVideo && (
+            <Link to={`/Article/${id}/${slugTitle}`}>
+              <CardImg top width="100%" src={url} alt="Card image cap" />
+            </Link>
+          )}
+          {isVideo && (
+            <video autoPlay="true" loop width="100%" src={media}>
+              <track default kind="captions" />
+            </video>
+          )}
           <CardBody>
             <CardTitle>{title}</CardTitle>
             <CardText>by {author}</CardText>
-            <CardText>score: {score}</CardText>
+            <CardText>{msg}</CardText>
+            <CardText>{score}</CardText>
+            <CardText>{numComments}</CardText>
             <Button
-              className="mr-2 border border-white"
+              className="mr-2 border-white btn-outline-light"
               onClick={() => setIsLike(!isLike)}
               style={{ backgroundColor: 'white' }}
             >
@@ -48,7 +76,7 @@ const NewsFeed2 = ({ title, url, author, id, permalink, score }) => {
               )}
             </Button>
             <Button
-              className="mr-2 border border-white button-outline:focus"
+              className="mr-2 border-white btn-outline-light"
               onClick={() => {
                 setIsTextArea(!isTextArea);
               }}
@@ -57,14 +85,19 @@ const NewsFeed2 = ({ title, url, author, id, permalink, score }) => {
               <FaRegComment size="1.5rem" color="#585e68" />
             </Button>
             <Button
-              className="border border-white"
+              className="border-white btn-outline-light"
               style={{ backgroundColor: 'white' }}
             >
               <RiShareForwardLine size="1.5rem" color="#585e68" />
             </Button>
             {isTextArea && (
               <div className="interface-comment">
-                <textarea id="comment-text" />
+                <input
+                  id="comment-text"
+                  type="text"
+                  value={msg}
+                  onChange={handleChange}
+                />
               </div>
             )}
           </CardBody>
@@ -74,13 +107,20 @@ const NewsFeed2 = ({ title, url, author, id, permalink, score }) => {
   );
 };
 
-NewsFeed2.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
-  permalink: PropTypes.string.isRequired,
+NewsFeed.defaultProps = {
+  url: ' ',
+  media: ' ',
 };
 
-export default NewsFeed2;
+NewsFeed.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string,
+  author: PropTypes.string.isRequired,
+  permalink: PropTypes.string.isRequired,
+  media: PropTypes.string,
+  score: PropTypes.number.isRequired,
+  numComments: PropTypes.number.isRequired,
+};
+
+export default NewsFeed;

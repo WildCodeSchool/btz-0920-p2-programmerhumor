@@ -1,14 +1,14 @@
-/* eslint-disable no-plusplus */
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { Row, Col, Spinner } from 'reactstrap';
-import Filter2 from './components/Filter2';
-import NewsFeed2 from './components/NewsFeed2';
+import Filter from './components/Filter';
+import NewsFeed from './components/NewsFeed';
 import './Home.css';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [originPost, setOriginPost] = useState([]);
 
   // useEffect(() => {
   //   Axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
@@ -30,63 +30,30 @@ const Home = () => {
             return child.data;
           })
       );
+      setOriginPost(
+        res.data.data.children.map((child) => {
+          return child.data;
+        })
+      );
       setLoading(false);
     });
   }, []);
-  // const tablscore = posts.map((post) => {
-  //   return post.score;
-  // });
-  // function sortArray(array) {
-  //   const tabl = [];
-  //   const inc = [];
-  //   for (let k = 0; k < array.length; k++) {
-  //     inc.push(array[k]);
-  //   }
-  //   for (let j = 0; j < inc.length; j++) {
-  //     let index = 0;
-  //     let max = 0;
-  //     for (let i = 0; i < array.length; i++) {
-  //       if (array[i] > max) {
-  //         max = array[i];
-  //         index = i;
-  //       }
-  //     }
-  //     tabl.push(max);
-  //     array.splice(index, 1);
-  //   }
-  //   return tabl;
-  // }
-  // const sortedArray = sortArray(tablscore);
-  // const totalTabl = posts.map((post) => {
-  //   return [
-  //     post.score,
-  //     {
-  //       title: post.title,
-  //       author: post.author,
-  //       url: post.url_overridden_by_dest,
-  //       selftext: post.selftext,
-  //       score: post.score,
-  //     },
-  //   ];
-  // });
-  // function sortPost(newArray, doubleTab) {
-  //   const fintab = [];
-  //   for (let i = 0; i < newArray.length; i++) {
-  //     for (let j = 0; j < doubleTab.length; j++) {
-  //       if (newArray[i] === doubleTab[j][0]) {
-  //         fintab.push(doubleTab[j][1]);
-  //       }
-  //     }
-  //   }
-  //   return fintab;
-  // }
-  // const fintab = sortPost(sortedArray, totalTabl);
-  // console.log(fintab);
-  // eslint-disable-next-line no-console
-  console.log(posts);
+
+  const liking = () => {
+    setPosts([...posts.sort((a, b) => b.score - a.score)]);
+  };
+
+  const commenting = () => {
+    setPosts([...posts.sort((a, b) => b.num_comments - a.num_comments)]);
+  };
+
+  const dating = () => {
+    setPosts([...originPost]);
+  };
+
   return (
     <div className="App">
-      <Filter2 />
+      <Filter liking={liking} commenting={commenting} dating={dating} />
       <Row>
         {loading ? (
           <Col className="text-center">
@@ -95,14 +62,17 @@ const Home = () => {
         ) : (
           posts.map((post) => {
             return (
-              <NewsFeed2
+              <NewsFeed
                 id={post.id}
                 title={post.title}
                 selftext={post.selftext}
                 author={post.author}
                 url={post.url_overridden_by_dest}
                 permalink={post.permalink}
+                media={post.media?.reddit_video?.fallback_url}
                 score={post.score}
+                numComments={post.num_comments}
+                key={post.id}
               />
             );
           })

@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
-import Footer from './Footer';
-import Header2 from './Header2';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 const Layout = ({ children }) => {
   return (
     <>
-      <Header2 />
+      <Header />
       <Container>{children}</Container>
       <Footer />
     </>
@@ -14,6 +14,6 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 export default Layout;

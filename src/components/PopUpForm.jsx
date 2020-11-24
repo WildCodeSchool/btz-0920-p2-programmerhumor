@@ -12,13 +12,9 @@ import {
   ModalFooter,
 } from 'reactstrap';
 
-const PopUpForm = (props) => {
-  const { buttonLabel, className } = props;
-
+const PopUpForm = ({ buttonLabel, className }) => {
   const [modal, setModal] = useState(false);
-
   const toggle = () => setModal(!modal);
-
   const closeBtn = (
     <button type="button" className="close" onClick={toggle}>
       &times;
@@ -29,10 +25,10 @@ const PopUpForm = (props) => {
     <div>
       <Button
         className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
-        color="outline-info"
+        color="outline-light"
         onClick={toggle}
       >
-        {buttonLabel}Contact us
+        {buttonLabel}Contact
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle} close={closeBtn}>
@@ -86,9 +82,14 @@ const PopUpForm = (props) => {
   );
 };
 
+PopUpForm.defaultProps = {
+  buttonLabel: ' ',
+  className: ' ',
+};
+
 PopUpForm.propTypes = {
-  buttonLabel: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  buttonLabel: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default PopUpForm;

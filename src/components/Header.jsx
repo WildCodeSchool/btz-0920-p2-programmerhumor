@@ -19,9 +19,8 @@ import { faRedditAlien } from '@fortawesome/free-brands-svg-icons';
 import PopUpSignIn from './PopUpSignIn';
 import PopUpLogIn from './PopUpLogIn';
 
-const Header2 = () => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
 
   return (
@@ -64,7 +63,7 @@ const Header2 = () => {
             <a
               href="https://www.reddit.com/r/ProgrammerHumor/"
               target="blank"
-              className="text-decoration-none color-darkGrey title-font-size pr-3"
+              className="text-decoration-none color-darkGrey title-font-size font-weight-bold pr-3 d-none d-md-block"
             >
               {' '}
               Reddit Programmer Humor
@@ -76,4 +75,4 @@ const Header2 = () => {
   );
 };
 
-export default Header2;
+export default Header;
