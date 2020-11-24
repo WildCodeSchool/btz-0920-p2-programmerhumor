@@ -15,24 +15,23 @@ import { FiHeart } from 'react-icons/fi';
 import { RiShareForwardLine } from 'react-icons/ri';
 import './body.css';
 
-const NewsFeed = ({
-  title,
-  url,
-  author,
-  id,
-  permalink,
-  media,
-  score,
-  numComments,
-}) => {
+const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
   const [slugTitle, setSlugTitle] = useState(' ');
   const [msg, setMsg] = useState('');
   const [isVideo, setIsVideo] = useState(false);
+  const [numberScore, setNumberScore] = useState(score + 1);
 
   const handleChange = (e) => {
     setMsg(e.target.value);
+  };
+
+  const counterLike = () => {
+    setIsLike(!isLike);
+
+    // eslint-disable-next-line no-unused-expressions
+    isLike ? setNumberScore(numberScore - 1) : setNumberScore(numberScore + 1);
   };
 
   useEffect(() => {
@@ -62,11 +61,10 @@ const NewsFeed = ({
             <CardTitle>{title}</CardTitle>
             <CardText>by {author}</CardText>
             <CardText>{msg}</CardText>
-            <CardText>{score}</CardText>
-            <CardText>{numComments}</CardText>
+            <CardText>Likes : {numberScore}</CardText>
             <Button
               className="mr-2 border-white btn-outline-light"
-              onClick={() => setIsLike(!isLike)}
+              onClick={counterLike}
               style={{ backgroundColor: 'white' }}
             >
               {isLike ? (
@@ -120,7 +118,6 @@ NewsFeed.propTypes = {
   permalink: PropTypes.string.isRequired,
   media: PropTypes.string,
   score: PropTypes.number.isRequired,
-  numComments: PropTypes.number.isRequired,
 };
 
 export default NewsFeed;
