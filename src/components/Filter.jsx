@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 const Filter = ({ liking, commenting, dating }) => {
   const [cSelected, setCSelected] = useState([]);
-  const [rSelected, setRSelected] = useState(false);
+  const [rSelected, setRSelected] = useState(null);
   // eslint-disable-next-line no-unused-vars
   const onCheckboxBtnClick = (selected) => {
     const index = cSelected.indexOf(selected);

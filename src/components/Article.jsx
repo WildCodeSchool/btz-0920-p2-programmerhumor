@@ -9,11 +9,20 @@ import {
   Button,
   Col,
   Spinner,
+  UncontrolledPopover,
+  PopoverHeader,
 } from 'reactstrap';
-import { FaHeart, FaRegComment } from 'react-icons/fa';
+import {
+  FaFacebook,
+  FaFacebookMessenger,
+  FaHeart,
+  FaRegComment,
+} from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
 import { RiShareForwardLine } from 'react-icons/ri';
 import { useParams } from 'react-router-dom';
+import { AiFillInstagram, AiOutlineTwitter } from 'react-icons/ai';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './Article.css';
 
 const Article = () => {
@@ -23,6 +32,7 @@ const Article = () => {
   const { id, title } = useParams();
   const [loading, setLoading] = useState(true);
   const [msg, setMsg] = useState('');
+  const [copied, setCopied] = useState(false);
 
   const handleChange = (e) => {
     setMsg(e.target.value);
@@ -55,7 +65,7 @@ const Article = () => {
           <CardText className="font-weight-bold">by {posts.author}</CardText>
           <CardText>{msg}</CardText>
           <Button
-            className="mr-2 border-white btn-outline-light"
+            className="border-white btn-outline-light"
             onClick={() => setIsLike(!isLike)}
             style={{ backgroundColor: 'white' }}
           >
@@ -74,12 +84,39 @@ const Article = () => {
           >
             <FaRegComment size="1.5rem" color="#585E68" />
           </Button>
-          <Button
-            className="border-white btn-outline-light"
-            style={{ backgroundColor: 'white' }}
+          <CopyToClipboard
+            text={`https://www.reddit.com/r/programmerhumor/comments/${id}/${title}`}
+            onCopy={() => setCopied(!copied)}
           >
-            <RiShareForwardLine size="1.5rem" color="#585E68" />
-          </Button>
+            <Button
+              id="PopoverLegacy"
+              type="button"
+              className="border-white btn-outline-light px-0 py-1"
+              style={{ backgroundColor: 'white' }}
+            >
+              <RiShareForwardLine size="1.5rem" color="#585e68" />
+            </Button>
+          </CopyToClipboard>
+          <UncontrolledPopover
+            trigger="legacy"
+            placement="bottom"
+            target="PopoverLegacy"
+          >
+            <PopoverHeader className="popUpShare">
+              <a href="https://www.instagram.com" target="blank">
+                <AiFillInstagram size="2.5rem" className="iconShare" />
+              </a>
+              <a href="https://www.facebook.com" target="blank">
+                <FaFacebook size="2rem" className="iconShare" />
+              </a>
+              <a href="https://twitter.com/" target="blank">
+                <AiOutlineTwitter size="2.5rem" className="iconShare" />
+              </a>
+              <a href="https://www.messenger.com/login.php" target="blank">
+                <FaFacebookMessenger size="2rem" className="iconShare" />
+              </a>
+            </PopoverHeader>
+          </UncontrolledPopover>
           {isTextArea && (
             <div className="interface-comment">
               <input

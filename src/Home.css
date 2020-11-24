@@ -49,3 +49,14 @@
 .spinner {
   color: #fe4602 !important;
 }
+
+.iconShare {
+  color: #585e68 !important;
+}
+.iconShare:hover {
+  color: #fe4602 !important;
+}
+
+.popUpShare {
+  border: 2px solid #585e68 !important;
+}
