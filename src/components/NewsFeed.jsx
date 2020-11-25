@@ -91,7 +91,7 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
               <FaRegComment size="1.5rem" color="#585e68" />
             </Button>
             <CopyToClipboard
-              text={`https://www.reddit.com/r/programmerhumor/comments/${id}/${slugTitle}.json`}
+              text={`https://www.reddit.com/r/programmerhumor/comments/${id}/${slugTitle}`}
               onCopy={() => setCopied(!copied)}
             >
               <Button
