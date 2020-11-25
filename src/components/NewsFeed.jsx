@@ -13,15 +13,14 @@ import {
   UncontrolledPopover,
   PopoverHeader,
 } from 'reactstrap';
-import {
-  FaHeart,
-  FaRegComment,
-  FaFacebook,
-  FaFacebookMessenger,
-} from 'react-icons/fa';
+import { FaHeart, FaRegComment, FaFacebook } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
-import { RiShareForwardLine } from 'react-icons/ri';
-import { AiFillInstagram, AiOutlineTwitter } from 'react-icons/ai';
+import {
+  RiShareForwardLine,
+  RiMessengerLine,
+  RiTwitterLine,
+  RiInstagramLine,
+} from 'react-icons/ri';
 import './body.css';
 
 const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
@@ -110,18 +109,18 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
               placement="bottom"
               target="PopoverLegacy"
             >
-              <PopoverHeader className="popUpShare">
+              <PopoverHeader>
                 <a href="https://www.instagram.com" target="blank">
-                  <AiFillInstagram size="2.5rem" className="iconShare" />
+                  <RiInstagramLine size="2rem" className="iconShare mr-1" />
                 </a>
                 <a href="https://www.facebook.com" target="blank">
-                  <FaFacebook size="2rem" className="iconShare" />
+                  <FaFacebook size="1.8rem" className="iconShare mr-1" />
                 </a>
                 <a href="https://twitter.com/" target="blank">
-                  <AiOutlineTwitter size="2.5rem" className="iconShare" />
+                  <RiTwitterLine size="2rem" className="iconShare" />
                 </a>
                 <a href="https://www.messenger.com/login.php" target="blank">
-                  <FaFacebookMessenger size="2rem" className="iconShare" />
+                  <RiMessengerLine size="2rem" className="iconShare" />
                 </a>
               </PopoverHeader>
             </UncontrolledPopover>
