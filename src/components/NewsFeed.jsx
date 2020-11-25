@@ -54,7 +54,7 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
   return (
     <Col sm="12" md={{ size: 8, offset: 2 }}>
       {url !== ' ' && (
-        <Card className="mt-3">
+        <Card className="mt-3 mb-3 border border-dark">
           {!isVideo && (
             <Link to={`/Article/${id}/${slugTitle}`}>
               <CardImg top width="100%" src={url} alt="Card image cap" />

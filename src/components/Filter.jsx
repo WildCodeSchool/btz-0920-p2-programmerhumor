@@ -29,26 +29,24 @@ const Filter = ({ liking, commenting, dating }) => {
     <div className="p-4">
       <ButtonGroup className="mt-2">
         <Button
-          className={`mr-3 rounded-circle btn-orange-filter ${
+          className={`mr-5 rounded-circle btn-orange-filter ${
             rSelected === 1 && 'btn-active'
           }`}
           color="outline-light"
           onClick={handleClickDate}
-          title="Les posts les plus récents"
+          title="Most recent posts"
         >
-          <CgTimer size="2.5rem" className="mr-3 mx-auto" />
+          <CgTimer size="2.5rem" className="mx-auto" />
         </Button>
         <Button
-          className={`mr-3 rounded-circle btn-orange-filter ${
+          className={`mr-5 rounded-circle btn-orange-filter ${
             rSelected === 2 && 'btn-active'
           }`}
           color="outline-light"
           onClick={handleClickLike}
-          title="Les posts les plus likés"
+          title="Most liked posts"
         >
-          <FiHeart size="2.5rem" className="mr-3 mx-auto">
-            +
-          </FiHeart>
+          <FiHeart size="2.5rem" className="mx-auto" />
         </Button>
         <Button
           className={`rounded-circle btn-orange-filter ${
@@ -56,11 +54,9 @@ const Filter = ({ liking, commenting, dating }) => {
           }`}
           color="outline-light"
           onClick={handleClickComments}
-          title="Les posts les plus commentés"
+          title="Most commented posts"
         >
-          <FaRegComment size="2.5rem" className="mr-3 mx-auto">
-            +
-          </FaRegComment>
+          <FaRegComment size="2.5rem" className="mx-auto" />
         </Button>
       </ButtonGroup>
     </div>
