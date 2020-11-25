@@ -89,7 +89,7 @@ const Article = () => {
             }}
             style={{ backgroundColor: 'white' }}
           >
-            <FaRegComment size="1.5rem" color="#585E68" />
+            <FaRegComment size="1.5rem" color="#585e68" />
           </Button>
           <CopyToClipboard
             text={`https://www.reddit.com/r/programmerhumor/comments/${id}/${title}`}
