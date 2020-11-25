@@ -8,7 +8,9 @@ import '../Home.css';
 import PropTypes from 'prop-types';
 
 const Filter = ({ liking, commenting, dating }) => {
+
   const [rSelected, setRSelected] = useState(false);
+
 
   const handleClickDate = () => {
     setRSelected(1);

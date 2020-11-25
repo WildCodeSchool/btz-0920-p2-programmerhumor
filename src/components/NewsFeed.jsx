@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
   Card,
   CardImg,
@@ -9,10 +10,17 @@ import {
   CardTitle,
   Button,
   Col,
+  UncontrolledPopover,
+  PopoverHeader,
 } from 'reactstrap';
-import { FaHeart, FaRegComment } from 'react-icons/fa';
+import { FaHeart, FaRegComment, FaFacebook } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
-import { RiShareForwardLine } from 'react-icons/ri';
+import {
+  RiShareForwardLine,
+  RiMessengerLine,
+  RiTwitterLine,
+  RiInstagramLine,
+} from 'react-icons/ri';
 import './body.css';
 
 const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
@@ -22,6 +30,7 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
   const [msg, setMsg] = useState('');
   const [isVideo, setIsVideo] = useState(false);
   const [numberScore, setNumberScore] = useState(score + 1);
+  const [copied, setCopied] = useState(false);
 
   const handleChange = (e) => {
     setMsg(e.target.value);
@@ -63,7 +72,7 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
             <CardText>{msg}</CardText>
             <CardText>Likes : {numberScore}</CardText>
             <Button
-              className="mr-2 border-white btn-outline-light"
+              className="border-white btn-outline-light"
               onClick={counterLike}
               style={{ backgroundColor: 'white' }}
             >
@@ -74,7 +83,7 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
               )}
             </Button>
             <Button
-              className="mr-2 border-white btn-outline-light"
+              className="border-white btn-outline-light mr-2"
               onClick={() => {
                 setIsTextArea(!isTextArea);
               }}
@@ -82,12 +91,40 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
             >
               <FaRegComment size="1.5rem" color="#585e68" />
             </Button>
-            <Button
-              className="border-white btn-outline-light"
-              style={{ backgroundColor: 'white' }}
+            <CopyToClipboard
+              text={`https://www.reddit.com/r/programmerhumor/comments/${id}/${slugTitle}.json`}
+              onCopy={() => setCopied(!copied)}
             >
-              <RiShareForwardLine size="1.5rem" color="#585e68" />
-            </Button>
+              <Button
+                id="PopoverLegacy"
+                type="button"
+                className="border-white btn-outline-light px-0 py-1"
+                style={{ backgroundColor: 'white' }}
+              >
+                <RiShareForwardLine size="1.5rem" color="#585e68" />
+              </Button>
+            </CopyToClipboard>
+            <UncontrolledPopover
+              trigger="legacy"
+              placement="bottom"
+              target="PopoverLegacy"
+            >
+              <PopoverHeader>
+                <a href="https://www.instagram.com" target="blank">
+                  <RiInstagramLine size="2rem" className="iconShare mr-1" />
+                </a>
+                <a href="https://www.facebook.com" target="blank">
+                  <FaFacebook size="1.8rem" className="iconShare mr-1" />
+                </a>
+                <a href="https://twitter.com/" target="blank">
+                  <RiTwitterLine size="2rem" className="iconShare" />
+                </a>
+                <a href="https://www.messenger.com/login.php" target="blank">
+                  <RiMessengerLine size="2rem" className="iconShare" />
+                </a>
+              </PopoverHeader>
+            </UncontrolledPopover>
+
             {isTextArea && (
               <div className="interface-comment">
                 <input
