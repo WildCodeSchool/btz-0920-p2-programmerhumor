@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -11,10 +11,38 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
+import UserContext from '../UserContext';
 
 const PopUpLogIn = ({ buttonLabel, className }) => {
   const [modal, setModal] = useState(false);
+  const [entries, setEntries] = useState({});
+
+  const handleChange = (event) => {
+    const [name] = event.target.name;
+    setEntries({ ...entries, [name]: event.target.value });
+  };
   const toggle = () => setModal(!modal);
+
+  const { user } = useContext(UserContext);
+
+  const errorMessage = () => {
+    // eslint-disable-next-line no-alert
+    alert(`Authentification échouée, veuillez réessayer`);
+  };
+
+  const logMessage = () => {
+    // eslint-disable-next-line no-alert
+    alert(`Bienvenue ${user.U}`);
+  };
+
+  const handleSubmit = () => {
+    if (user.e === entries.e && user.p === entries.p) {
+      toggle();
+      logMessage();
+    } else {
+      errorMessage();
+    }
+  };
   const closeBtn = (
     <button type="button" className="close" onClick={toggle}>
       &times;
@@ -41,6 +69,8 @@ const PopUpLogIn = ({ buttonLabel, className }) => {
               <Input
                 type="email"
                 name="email"
+                onChange={handleChange}
+                value={entries.email}
                 id="exampleEmail"
                 placeholder=""
               />
@@ -50,6 +80,8 @@ const PopUpLogIn = ({ buttonLabel, className }) => {
               <Input
                 type="password"
                 name="password"
+                onChange={handleChange}
+                value={entries.password}
                 id="examplePassword"
                 placeholder=""
               />
@@ -65,7 +97,7 @@ const PopUpLogIn = ({ buttonLabel, className }) => {
           <Button
             className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
             color="outline-info"
-            onClick={toggle}
+            onClick={handleSubmit}
           >
             Log in
           </Button>{' '}
