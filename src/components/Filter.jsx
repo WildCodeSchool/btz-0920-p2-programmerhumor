@@ -3,22 +3,14 @@ import { Button, ButtonGroup } from 'reactstrap';
 import { FiHeart } from 'react-icons/fi';
 import { FaRegComment } from 'react-icons/fa';
 import { CgTimer } from 'react-icons/cg';
+import '../Home.css';
 
 import PropTypes from 'prop-types';
 
 const Filter = ({ liking, commenting, dating }) => {
-  const [cSelected, setCSelected] = useState([]);
-  const [rSelected, setRSelected] = useState(null);
-  // eslint-disable-next-line no-unused-vars
-  const onCheckboxBtnClick = (selected) => {
-    const index = cSelected.indexOf(selected);
-    if (index < 0) {
-      cSelected.push(selected);
-    } else {
-      cSelected.splice(index, 1);
-    }
-    setCSelected([...cSelected]);
-  };
+
+  const [rSelected, setRSelected] = useState(false);
+
 
   const handleClickDate = () => {
     setRSelected(1);
@@ -38,7 +30,10 @@ const Filter = ({ liking, commenting, dating }) => {
   return (
     <div className="p-4">
       <ButtonGroup className="mt-2">
-        <Button className="mr-3 rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active">
+        <Button
+          className="mr-3 rounded-circle btn-orange-filter btn-orange-filter:hover"
+          color="outline-light"
+        >
           <CgTimer
             size="2.5rem"
             className="mr-3 mx-auto"
@@ -48,7 +43,10 @@ const Filter = ({ liking, commenting, dating }) => {
             +
           </CgTimer>
         </Button>
-        <Button className="mr-3 rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active">
+        <Button
+          className="mr-3 rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active"
+          color="outline-light"
+        >
           <FiHeart
             size="2.5rem"
             className="mr-3 mx-auto"
@@ -58,7 +56,10 @@ const Filter = ({ liking, commenting, dating }) => {
             +
           </FiHeart>
         </Button>
-        <Button className="rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active">
+        <Button
+          className="rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active"
+          color="outline-light"
+        >
           <FaRegComment
             size="2.5rem"
             className="mr-3 mx-auto"

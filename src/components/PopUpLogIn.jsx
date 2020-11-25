@@ -64,7 +64,7 @@ const PopUpLogIn = ({ buttonLabel, className }) => {
         <ModalFooter>
           <Button
             className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
-            color="outline-info"
+            color="outline-light"
             onClick={toggle}
           >
             Log in

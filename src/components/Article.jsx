@@ -24,7 +24,7 @@ import { useParams } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './Article.css';
 
-const Article = () => {
+const Article = (score) => {
   const [posts, setPosts] = useState([]);
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
@@ -32,9 +32,18 @@ const Article = () => {
   const [loading, setLoading] = useState(true);
   const [msg, setMsg] = useState('');
   const [copied, setCopied] = useState(false);
+  const [numberScore, setNumberScore] = useState(score + 1);
+
 
   const handleChange = (e) => {
     setMsg(e.target.value);
+  };
+
+  const counterLike = () => {
+    setIsLike(!isLike);
+
+    // eslint-disable-next-line no-unused-expressions
+    isLike ? setNumberScore(numberScore - 1) : setNumberScore(numberScore + 1);
   };
 
   useEffect(() => {
@@ -63,9 +72,11 @@ const Article = () => {
           </CardTitle>
           <CardText className="font-weight-bold">by {posts.author}</CardText>
           <CardText>{msg}</CardText>
+          <CardText>Likes : {numberScore}</CardText>
           <Button
-            className="border-white btn-outline-light"
-            onClick={() => setIsLike(!isLike)}
+            className="mr-2 border-white btn-outline-light"
+            onClick={counterLike}
+
             style={{ backgroundColor: 'white' }}
           >
             {isLike ? (
