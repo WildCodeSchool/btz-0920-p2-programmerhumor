@@ -10,17 +10,6 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [originPost, setOriginPost] = useState([]);
 
-  // useEffect(() => {
-  //   Axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
-  //     setPosts(
-  //       res.data.data.children.map((child) => {
-  //         return child.data;
-  //       })
-  //     );
-  //     setLoading(false);
-  //   });
-  // }, []);
-
   useEffect(() => {
     Axios.get('https://www.reddit.com/r/programmerhumor.json').then((res) => {
       setPosts(
