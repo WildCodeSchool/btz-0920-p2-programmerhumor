@@ -21,7 +21,6 @@ import {
   RiTwitterLine,
   RiInstagramLine,
 } from 'react-icons/ri';
-import './body.css';
 
 const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
   const [isLike, setIsLike] = useState(false);
@@ -67,10 +66,10 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
             </video>
           )}
           <CardBody>
-            <CardTitle>{title}</CardTitle>
+            <CardTitle className="font-weight-bold">{title}</CardTitle>
             <CardText>by {author}</CardText>
-            <CardText>{msg}</CardText>
             <CardText>Likes : {numberScore}</CardText>
+            <CardText>{msg}</CardText>
             <Button
               className="border-white btn-outline-light"
               onClick={counterLike}

@@ -8,9 +8,7 @@ import '../Home.css';
 import PropTypes from 'prop-types';
 
 const Filter = ({ liking, commenting, dating }) => {
-
-  const [rSelected, setRSelected] = useState(false);
-
+  const [rSelected, setRSelected] = useState(null);
 
   const handleClickDate = () => {
     setRSelected(1);
@@ -31,41 +29,36 @@ const Filter = ({ liking, commenting, dating }) => {
     <div className="p-4">
       <ButtonGroup className="mt-2">
         <Button
-          className="mr-3 rounded-circle btn-orange-filter btn-orange-filter:hover"
+          className={`mr-3 rounded-circle btn-orange-filter ${
+            rSelected === 1 && 'btn-active'
+          }`}
           color="outline-light"
+          onClick={handleClickDate}
+          title="Les posts les plus récents"
         >
-          <CgTimer
-            size="2.5rem"
-            className="mr-3 mx-auto"
-            onClick={handleClickDate}
-            active={rSelected ? 1 : undefined}
-          >
-            +
-          </CgTimer>
+          <CgTimer size="2.5rem" className="mr-3 mx-auto" />
         </Button>
         <Button
-          className="mr-3 rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active"
+          className={`mr-3 rounded-circle btn-orange-filter ${
+            rSelected === 2 && 'btn-active'
+          }`}
           color="outline-light"
+          onClick={handleClickLike}
+          title="Les posts les plus likés"
         >
-          <FiHeart
-            size="2.5rem"
-            className="mr-3 mx-auto"
-            onClick={handleClickLike}
-            active={rSelected ? 2 : undefined}
-          >
+          <FiHeart size="2.5rem" className="mr-3 mx-auto">
             +
           </FiHeart>
         </Button>
         <Button
-          className="rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active"
+          className={`rounded-circle btn-orange-filter ${
+            rSelected === 3 && 'btn-active'
+          }`}
           color="outline-light"
+          onClick={handleClickComments}
+          title="Les posts les plus commentés"
         >
-          <FaRegComment
-            size="2.5rem"
-            className="mr-3 mx-auto"
-            onClick={handleClickComments}
-            active={rSelected ? 3 : undefined}
-          >
+          <FaRegComment size="2.5rem" className="mr-3 mx-auto">
             +
           </FaRegComment>
         </Button>

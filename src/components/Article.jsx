@@ -24,7 +24,7 @@ import { useParams } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './Article.css';
 
-const Article = (score) => {
+const Article = () => {
   const [posts, setPosts] = useState([]);
   const [isLike, setIsLike] = useState(false);
   const [isTextArea, setIsTextArea] = useState(false);
@@ -32,8 +32,7 @@ const Article = (score) => {
   const [loading, setLoading] = useState(true);
   const [msg, setMsg] = useState('');
   const [copied, setCopied] = useState(false);
-  const [numberScore, setNumberScore] = useState(score + 1);
-
+  const [score, setScore] = useState(0);
 
   const handleChange = (e) => {
     setMsg(e.target.value);
@@ -43,7 +42,7 @@ const Article = (score) => {
     setIsLike(!isLike);
 
     // eslint-disable-next-line no-unused-expressions
-    isLike ? setNumberScore(numberScore - 1) : setNumberScore(numberScore + 1);
+    isLike ? setScore(score - 1) : setScore(score + 1);
   };
 
   useEffect(() => {
@@ -51,6 +50,7 @@ const Article = (score) => {
       `https://www.reddit.com/r/programmerhumor/comments/${id}/${title}.json`
     ).then((res) => {
       setPosts(res.data[0].data.children[0].data);
+      setScore(res.data[0].data.children[0].data.score);
       setLoading(false);
     });
   }, []);
@@ -67,16 +67,13 @@ const Article = (score) => {
       <Card className="mt-3">
         <CardImg top width="100%" src={posts.url} alt="Card image cap" />
         <CardBody className="text-center">
-          <CardTitle className="font-weight-bold text-uppercase">
-            {posts.title}
-          </CardTitle>
+          <CardTitle className="font-weight-bold">{posts.title}</CardTitle>
           <CardText className="font-weight-bold">by {posts.author}</CardText>
           <CardText>{msg}</CardText>
-          <CardText>Likes : {numberScore}</CardText>
+          <CardText>Likes : {score}</CardText>
           <Button
             className="mr-2 border-white btn-outline-light"
             onClick={counterLike}
-
             style={{ backgroundColor: 'white' }}
           >
             {isLike ? (
