@@ -22,9 +22,16 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
     const [name] = event.target.name;
     setUser({ ...user, [name]: event.target.value });
   };
+  const alertMessage = () => {
+    // eslint-disable-next-line no-alert
+    alert(
+      `Bienvenue ${user.U}. Votre compte viens d'être créé. Veuillez vous connecter`
+    );
+  };
 
   const handleSubmit = () => {
     toggle();
+    alertMessage();
   };
 
   const closeBtn = (
