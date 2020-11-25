@@ -21,6 +21,8 @@ import {
   RiTwitterLine,
   RiInstagramLine,
 } from 'react-icons/ri';
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
   const [isLike, setIsLike] = useState(false);
@@ -40,6 +42,20 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
 
     // eslint-disable-next-line no-unused-expressions
     isLike ? setNumberScore(numberScore - 1) : setNumberScore(numberScore + 1);
+  };
+
+  const notify = () => {
+    toast('Link copied!', {
+      position: 'top-left',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      transition: Slide,
+      className: 'toastCustom',
+    });
   };
 
   useEffect(() => {
@@ -99,13 +115,14 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
                 type="button"
                 className="border-white btn-outline-light px-0 py-1"
                 style={{ backgroundColor: 'white' }}
+                onClick={notify}
               >
                 <RiShareForwardLine size="1.5rem" color="#585e68" />
               </Button>
             </CopyToClipboard>
             <UncontrolledPopover
               trigger="legacy"
-              placement="bottom"
+              placement="right"
               target="PopoverLegacy"
             >
               <PopoverHeader>
@@ -123,6 +140,7 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
                 </a>
               </PopoverHeader>
             </UncontrolledPopover>
+            <ToastContainer />
 
             {isTextArea && (
               <div className="interface-comment">

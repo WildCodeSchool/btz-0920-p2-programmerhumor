@@ -99,14 +99,14 @@ const Article = () => {
               id="PopoverLegacy"
               type="button"
               className="border-white btn-outline-light px-0 py-1"
-              style={{ backgroundColor: 'white' }}
+              style={{ backgroundColor: 'white', border: 'none' }}
             >
               <RiShareForwardLine size="1.5rem" color="#585e68" />
             </Button>
           </CopyToClipboard>
           <UncontrolledPopover
             trigger="legacy"
-            placement="bottom"
+            placement="right"
             target="PopoverLegacy"
           >
             <PopoverHeader>
