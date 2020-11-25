@@ -14,7 +14,9 @@ import {
 
 const PopUpForm = ({ buttonLabel, className }) => {
   const [modal, setModal] = useState(false);
+
   const toggle = () => setModal(!modal);
+
   const closeBtn = (
     <button type="button" className="close" onClick={toggle}>
       &times;
