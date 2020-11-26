@@ -16,6 +16,8 @@ import UserContext from '../UserContext';
 const PopUpLogIn = ({ buttonLabel, className }) => {
   const [modal, setModal] = useState(false);
   const [entries, setEntries] = useState({});
+  const { setIsConnected } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const handleChange = (event) => {
     const [name] = event.target.name;
@@ -23,20 +25,19 @@ const PopUpLogIn = ({ buttonLabel, className }) => {
   };
   const toggle = () => setModal(!modal);
 
-  const { user } = useContext(UserContext);
-
   const errorMessage = () => {
     // eslint-disable-next-line no-alert
-    alert(`Authentification échouée, veuillez réessayer`);
+    alert(`The authentication has failed, please try again`);
   };
 
   const logMessage = () => {
     // eslint-disable-next-line no-alert
-    alert(`Bienvenue ${user.U}`);
+    alert(`Welcome ${user.U}`);
   };
 
   const handleSubmit = () => {
     if (user.e === entries.e && user.p === entries.p) {
+      setIsConnected(true);
       toggle();
       logMessage();
     } else {

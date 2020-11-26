@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Collapse,
@@ -18,15 +18,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedditAlien } from '@fortawesome/free-brands-svg-icons';
 import PopUpSignIn from './PopUpSignIn';
 import PopUpLogIn from './PopUpLogIn';
+import UserContext from '../UserContext';
 
 const Header = () => {
   const disconnect = () => {
     // eslint-disable-next-line no-alert
-    alert(`Vous avez bien été déconnecté à la prochaine`);
+    alert(`You have logged out, see you soon`);
   };
+
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const { isConnected, setIsConnected, user } = useContext(UserContext);
+  const handleClick = () => {
+    disconnect();
+    setIsConnected(false);
+  };
 
+  const url = '../images/ppdefault.jpg';
   return (
     <div className="border-bottom w-100">
       <Navbar color="light" light expand="md">
@@ -35,34 +43,60 @@ const Header = () => {
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink>
-                <PopUpSignIn />
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink>
-                <PopUpLogIn />
-              </NavLink>
-            </NavItem>
-            <UncontrolledDropdown
-              direction="right"
-              className="m-3"
-              nav
-              inNavbar
-            >
-              <DropdownToggle className="pt-3" nav caret>
-                {' '}
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem onClick={disconnect}>Log out</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Night mode</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
+          {!isConnected ? (
+            <Nav className="mr-auto" navbar>
+              <NavItem>
+                <NavLink>
+                  <PopUpSignIn />
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink>
+                  <PopUpLogIn />
+                </NavLink>
+              </NavItem>
+              <UncontrolledDropdown
+                direction="right"
+                className="m-3"
+                nav
+                inNavbar
+              >
+                <DropdownToggle className="pt-3" nav caret>
+                  {' '}
+                  Options
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem onClick={disconnect}>Log out</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>Night mode</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          ) : (
+            <Nav className="mr-auto" navbar>
+              <img src={url} alt="profil" />
+              <NavItem className="orange" color="orange">
+                {user.U}
+              </NavItem>
+              <UncontrolledDropdown
+                direction="right"
+                className="m-3"
+                nav
+                inNavbar
+              >
+                <DropdownToggle className="pt-3" nav caret>
+                  {' '}
+                  Options
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem onClick={handleClick}>Log out</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>Night mode</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          )}
+
           <NavbarText>
             <a
               href="https://www.reddit.com/r/ProgrammerHumor/"

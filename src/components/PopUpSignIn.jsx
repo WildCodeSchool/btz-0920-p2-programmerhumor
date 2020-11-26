@@ -25,16 +25,16 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
   const alertMessage = () => {
     // eslint-disable-next-line no-alert
     alert(
-      `Felicitation ${user.U}. Votre compte viens d'être créé. Veuillez vous connecter`
+      `Congratatulation ${user.U}. You have created your account. Please login`
     );
   };
   const errorMessage = () => {
     // eslint-disable-next-line no-alert
-    alert('Veuillez renseigner tous les champs ');
+    alert('Please fill out all mandatory fields');
   };
   const notvalidemailmessage = () => {
     // eslint-disable-next-line no-alert
-    alert(`Adresse mail fournise invalide veuillez en saisir une correcte`);
+    alert(`Your email address is invalid, please try again`);
   };
   const handleSubmit = () => {
     if (!user.e.split('').includes('@')) {
