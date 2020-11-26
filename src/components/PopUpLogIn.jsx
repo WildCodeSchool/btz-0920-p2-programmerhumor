@@ -27,12 +27,12 @@ const PopUpLogIn = ({ buttonLabel, className }) => {
 
   const errorMessage = () => {
     // eslint-disable-next-line no-alert
-    alert(`The authentication has failed, please try again`);
+    alert(`The authentication has failed, please try again.`);
   };
 
   const logMessage = () => {
     // eslint-disable-next-line no-alert
-    alert(`Welcome ${user.U}`);
+    alert(`Welcome ${user.U}!`);
   };
 
   const handleSubmit = () => {

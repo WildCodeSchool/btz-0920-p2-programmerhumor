@@ -40,8 +40,11 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
   const counterLike = () => {
     setIsLike(!isLike);
 
-    // eslint-disable-next-line no-unused-expressions
-    isLike ? setNumberScore(numberScore - 1) : setNumberScore(numberScore + 1);
+    if (isLike) {
+      setNumberScore(numberScore - 1);
+    } else {
+      setNumberScore(numberScore + 1);
+    }
   };
 
   const notify = () => {
