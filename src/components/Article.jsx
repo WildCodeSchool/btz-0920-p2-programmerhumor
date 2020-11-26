@@ -22,6 +22,8 @@ import {
 } from 'react-icons/ri';
 import { useParams } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Article.css';
 
 const Article = () => {
@@ -43,6 +45,20 @@ const Article = () => {
 
     // eslint-disable-next-line no-unused-expressions
     isLike ? setScore(score - 1) : setScore(score + 1);
+  };
+
+  const notify = () => {
+    toast('Link copied!', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      transition: Slide,
+      className: 'toastCustom',
+    });
   };
 
   useEffect(() => {
@@ -100,6 +116,7 @@ const Article = () => {
               type="button"
               className="border-white btn-outline-light px-0 py-1"
               style={{ backgroundColor: 'white', border: 'none' }}
+              onClick={notify}
             >
               <RiShareForwardLine size="1.5rem" color="#585e68" />
             </Button>
@@ -124,6 +141,7 @@ const Article = () => {
               </a>
             </PopoverHeader>
           </UncontrolledPopover>
+          <ToastContainer />
           {isTextArea && (
             <div className="interface-comment">
               <input

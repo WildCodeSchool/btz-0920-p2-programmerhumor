@@ -46,7 +46,7 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
 
   const notify = () => {
     toast('Link copied!', {
-      position: 'top-left',
+      position: 'top-right',
       autoClose: 2000,
       hideProgressBar: true,
       closeOnClick: true,
@@ -117,7 +117,7 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
                 style={{ backgroundColor: 'white' }}
                 onClick={notify}
               >
-                <RiShareForwardLine size="1.5rem" color="#585e68" />
+                <RiShareForwardLine size="1.7rem" color="#585e68" />
               </Button>
             </CopyToClipboard>
             <UncontrolledPopover
