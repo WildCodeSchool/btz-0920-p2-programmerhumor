@@ -43,8 +43,11 @@ const Article = () => {
   const counterLike = () => {
     setIsLike(!isLike);
 
-    // eslint-disable-next-line no-unused-expressions
-    isLike ? setScore(score - 1) : setScore(score + 1);
+    if (isLike) {
+      setScore(score - 1);
+    } else {
+      setScore(score + 1);
+    }
   };
 
   const notify = () => {

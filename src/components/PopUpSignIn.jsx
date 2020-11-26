@@ -22,19 +22,20 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
     const [name] = event.target.name;
     setUser({ ...user, [name]: event.target.value });
   };
+
   const alertMessage = () => {
     // eslint-disable-next-line no-alert
     alert(
-      `Congratatulation ${user.U}. You have created your account. Please login`
+      `Congratulations ${user.U}. You have created your account. Please login.`
     );
   };
   const errorMessage = () => {
     // eslint-disable-next-line no-alert
-    alert('Please fill out all mandatory fields');
+    alert('Please fill out all mandatory fields.');
   };
   const notvalidemailmessage = () => {
     // eslint-disable-next-line no-alert
-    alert(`Your email address is invalid, please try again`);
+    alert(`Your email address is invalid, please try again.`);
   };
   const handleSubmit = () => {
     if (!user.e.split('').includes('@')) {

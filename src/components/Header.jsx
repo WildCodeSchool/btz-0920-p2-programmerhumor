@@ -16,6 +16,7 @@ import {
 } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedditAlien } from '@fortawesome/free-brands-svg-icons';
+import { BiUserCircle } from 'react-icons/bi';
 import PopUpSignIn from './PopUpSignIn';
 import PopUpLogIn from './PopUpLogIn';
 import UserContext from '../UserContext';
@@ -23,7 +24,7 @@ import UserContext from '../UserContext';
 const Header = () => {
   const disconnect = () => {
     // eslint-disable-next-line no-alert
-    alert(`You have logged out, see you soon`);
+    alert(`You have logged out, see you soon.`);
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +35,6 @@ const Header = () => {
     setIsConnected(false);
   };
 
-  const url = '../images/ppdefault.jpg';
   return (
     <div className="border-bottom w-100">
       <Navbar color="light" light expand="md">
@@ -74,9 +74,8 @@ const Header = () => {
             </Nav>
           ) : (
             <Nav className="mr-auto" navbar>
-              <img src={url} alt="profil" />
-              <NavItem className="orange" color="orange">
-                {user.U}
+              <NavItem className="d-flex align-items-center mt-2 color-darkGrey">
+                <BiUserCircle size="2rem" /> {user.U}
               </NavItem>
               <UncontrolledDropdown
                 direction="right"
@@ -84,7 +83,7 @@ const Header = () => {
                 nav
                 inNavbar
               >
-                <DropdownToggle className="pt-3" nav caret>
+                <DropdownToggle className="pt-3 color-darkGrey" nav caret>
                   {' '}
                   Options
                 </DropdownToggle>
