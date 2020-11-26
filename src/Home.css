@@ -18,19 +18,20 @@
 }
 
 .btn-orange-filter {
-  color: #fe4602 !important;
-  border-color: #fe4602 !important;
-  background-color: white !important;
-  border: solid 2px !important;
+  color: #fe4602;
+  border-color: #fe4602;
+  background-color: white;
+  border: solid 2px;
 }
 
 .btn-orange-filter:hover {
-  color: white !important;
-  background-color: #fe4602 !important;
+  color: white;
+  background-color: #fe4602;
 }
 
-.btn-orange-filter:not(:disabled):not(.disabled):active {
-  background-color: #fe4602 !important;
+.btn-active {
+  color: white;
+  background-color: #fe4602;
 }
 
 .color-darkGrey {
@@ -48,4 +49,18 @@
 
 .spinner {
   color: #fe4602 !important;
+}
+
+.iconShare {
+  color: #585e68 !important;
+}
+.iconShare:hover {
+  color: #fe4602 !important;
+}
+.toastCustom {
+  border-radius: 5px !important;
+  border: 2px solid #fe4602 !important;
+  box-shadow: none !important;
+  color: #fe4602 !important;
+  /* width: 50% !important; */
 }

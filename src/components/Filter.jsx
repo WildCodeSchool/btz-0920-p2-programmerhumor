@@ -3,22 +3,12 @@ import { Button, ButtonGroup } from 'reactstrap';
 import { FiHeart } from 'react-icons/fi';
 import { FaRegComment } from 'react-icons/fa';
 import { CgTimer } from 'react-icons/cg';
+import '../Home.css';
 
 import PropTypes from 'prop-types';
 
 const Filter = ({ liking, commenting, dating }) => {
-  const [cSelected, setCSelected] = useState([]);
-  const [rSelected, setRSelected] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const onCheckboxBtnClick = (selected) => {
-    const index = cSelected.indexOf(selected);
-    if (index < 0) {
-      cSelected.push(selected);
-    } else {
-      cSelected.splice(index, 1);
-    }
-    setCSelected([...cSelected]);
-  };
+  const [rSelected, setRSelected] = useState(null);
 
   const handleClickDate = () => {
     setRSelected(1);
@@ -38,35 +28,35 @@ const Filter = ({ liking, commenting, dating }) => {
   return (
     <div className="p-4">
       <ButtonGroup className="mt-2">
-        <Button className="mr-3 rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active">
-          <CgTimer
-            size="2.5rem"
-            className="mr-3 mx-auto"
-            onClick={handleClickDate}
-            active={rSelected ? 1 : undefined}
-          >
-            +
-          </CgTimer>
+        <Button
+          className={`mr-5 rounded-circle btn-orange-filter ${
+            rSelected === 1 && 'btn-active'
+          }`}
+          color="outline-light"
+          onClick={handleClickDate}
+          title="Most recent posts"
+        >
+          <CgTimer size="2.5rem" className="mx-auto" />
         </Button>
-        <Button className="mr-3 rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active">
-          <FiHeart
-            size="2.5rem"
-            className="mr-3 mx-auto"
-            onClick={handleClickLike}
-            active={rSelected ? 2 : undefined}
-          >
-            +
-          </FiHeart>
+        <Button
+          className={`mr-5 rounded-circle btn-orange-filter ${
+            rSelected === 2 && 'btn-active'
+          }`}
+          color="outline-light"
+          onClick={handleClickLike}
+          title="Most liked posts"
+        >
+          <FiHeart size="2.5rem" className="mx-auto" />
         </Button>
-        <Button className="rounded-circle btn-orange-filter btn-orange-filter:hover btn-orange-filter:not(:disabled):not(.disabled):active">
-          <FaRegComment
-            size="2.5rem"
-            className="mr-3 mx-auto"
-            onClick={handleClickComments}
-            active={rSelected ? 3 : undefined}
-          >
-            +
-          </FaRegComment>
+        <Button
+          className={`rounded-circle btn-orange-filter ${
+            rSelected === 3 && 'btn-active'
+          }`}
+          color="outline-light"
+          onClick={handleClickComments}
+          title="Most commented posts"
+        >
+          <FaRegComment size="2.5rem" className="mx-auto" />
         </Button>
       </ButtonGroup>
     </div>

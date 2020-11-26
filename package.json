@@ -16,10 +16,12 @@
     "icons": "^1.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^17.0.1",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-toastify": "^6.1.0",
     "reactstrap": "^8.7.1",
     "web-vitals": "^0.2.4"
   },

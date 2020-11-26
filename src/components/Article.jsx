@@ -9,11 +9,21 @@ import {
   Button,
   Col,
   Spinner,
+  UncontrolledPopover,
+  PopoverHeader,
 } from 'reactstrap';
-import { FaHeart, FaRegComment } from 'react-icons/fa';
+import { FaHeart, FaRegComment, FaFacebook } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
-import { RiShareForwardLine } from 'react-icons/ri';
+import {
+  RiShareForwardLine,
+  RiMessengerLine,
+  RiTwitterLine,
+  RiInstagramLine,
+} from 'react-icons/ri';
 import { useParams } from 'react-router-dom';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Article.css';
 
 const Article = () => {
@@ -23,9 +33,32 @@ const Article = () => {
   const { id, title } = useParams();
   const [loading, setLoading] = useState(true);
   const [msg, setMsg] = useState('');
+  const [copied, setCopied] = useState(false);
+  const [score, setScore] = useState(0);
 
   const handleChange = (e) => {
     setMsg(e.target.value);
+  };
+
+  const counterLike = () => {
+    setIsLike(!isLike);
+
+    // eslint-disable-next-line no-unused-expressions
+    isLike ? setScore(score - 1) : setScore(score + 1);
+  };
+
+  const notify = () => {
+    toast('Link copied!', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      transition: Slide,
+      className: 'toastCustom',
+    });
   };
 
   useEffect(() => {
@@ -33,6 +66,7 @@ const Article = () => {
       `https://www.reddit.com/r/programmerhumor/comments/${id}/${title}.json`
     ).then((res) => {
       setPosts(res.data[0].data.children[0].data);
+      setScore(res.data[0].data.children[0].data.score);
       setLoading(false);
     });
   }, []);
@@ -49,14 +83,13 @@ const Article = () => {
       <Card className="mt-3">
         <CardImg top width="100%" src={posts.url} alt="Card image cap" />
         <CardBody className="text-center">
-          <CardTitle className="font-weight-bold text-uppercase">
-            {posts.title}
-          </CardTitle>
+          <CardTitle className="font-weight-bold">{posts.title}</CardTitle>
           <CardText className="font-weight-bold">by {posts.author}</CardText>
           <CardText>{msg}</CardText>
+          <CardText>Likes : {score}</CardText>
           <Button
             className="mr-2 border-white btn-outline-light"
-            onClick={() => setIsLike(!isLike)}
+            onClick={counterLike}
             style={{ backgroundColor: 'white' }}
           >
             {isLike ? (
@@ -72,14 +105,43 @@ const Article = () => {
             }}
             style={{ backgroundColor: 'white' }}
           >
-            <FaRegComment size="1.5rem" color="#585E68" />
+            <FaRegComment size="1.5rem" color="#585e68" />
           </Button>
-          <Button
-            className="border-white btn-outline-light"
-            style={{ backgroundColor: 'white' }}
+          <CopyToClipboard
+            text={`https://www.reddit.com/r/programmerhumor/comments/${id}/${title}`}
+            onCopy={() => setCopied(!copied)}
           >
-            <RiShareForwardLine size="1.5rem" color="#585E68" />
-          </Button>
+            <Button
+              id="PopoverLegacy"
+              type="button"
+              className="border-white btn-outline-light px-0 py-1"
+              style={{ backgroundColor: 'white', border: 'none' }}
+              onClick={notify}
+            >
+              <RiShareForwardLine size="1.5rem" color="#585e68" />
+            </Button>
+          </CopyToClipboard>
+          <UncontrolledPopover
+            trigger="legacy"
+            placement="right"
+            target="PopoverLegacy"
+          >
+            <PopoverHeader>
+              <a href="https://www.instagram.com" target="blank">
+                <RiInstagramLine size="2rem" className="iconShare mr-1" />
+              </a>
+              <a href="https://www.facebook.com" target="blank">
+                <FaFacebook size="1.8rem" className="iconShare mr-1" />
+              </a>
+              <a href="https://twitter.com/" target="blank">
+                <RiTwitterLine size="2rem" className="iconShare" />
+              </a>
+              <a href="https://www.messenger.com/login.php" target="blank">
+                <RiMessengerLine size="2rem" className="iconShare" />
+              </a>
+            </PopoverHeader>
+          </UncontrolledPopover>
+          <ToastContainer />
           {isTextArea && (
             <div className="interface-comment">
               <input

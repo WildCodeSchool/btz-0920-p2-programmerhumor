@@ -112,8 +112,8 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
         <ModalFooter>
           <Button
             className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
-            color="outline-info"
             onClick={handleSubmit}
+            color="outline-light"
           >
             Sign in
           </Button>{' '}
