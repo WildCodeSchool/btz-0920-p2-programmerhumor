@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -11,10 +11,36 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
+import UserContext from '../UserContext';
 
 const PopUpSignIn = ({ buttonLabel, className }) => {
   const [modal, setModal] = useState(false);
+  const { user, setUser } = useContext(UserContext);
+
   const toggle = () => setModal(!modal);
+  const handleChange = (event) => {
+    const [name] = event.target.name;
+    setUser({ ...user, [name]: event.target.value });
+  };
+  const alertMessage = () => {
+    // eslint-disable-next-line no-alert
+    alert(
+      `Felicitation ${user.U}. Votre compte viens d'être créé. Veuillez vous connecter`
+    );
+  };
+  const errorMessage = () => {
+    // eslint-disable-next-line no-alert
+    alert('Veuillez renseigner tous les champs ');
+  };
+  const handleSubmit = () => {
+    if (user.U !== '' && user.e !== '' && user.p !== '') {
+      toggle();
+      alertMessage();
+    } else {
+      errorMessage();
+    }
+  };
+
   const closeBtn = (
     <button type="button" className="close" onClick={toggle}>
       &times;
@@ -41,7 +67,9 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
               <Input
                 type="UserName"
                 name="UserName"
+                value={user.UserName}
                 id="exampleUserName"
+                onChange={handleChange}
                 placeholder=""
               />
             </FormGroup>
@@ -50,6 +78,8 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
               <Input
                 type="email"
                 name="email"
+                value={user.email}
+                onChange={handleChange}
                 id="exampleEmail"
                 placeholder=""
               />
@@ -62,7 +92,9 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
               <Input
                 type="password"
                 name="password"
+                value={user.password}
                 id="examplePassword"
+                onChange={handleChange}
                 placeholder=""
               />
               <small id="passwordHelpBlock" className="form-text text-muted">
@@ -80,8 +112,8 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
         <ModalFooter>
           <Button
             className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
+            onClick={handleSubmit}
             color="outline-light"
-            onClick={toggle}
           >
             Sign in
           </Button>{' '}
