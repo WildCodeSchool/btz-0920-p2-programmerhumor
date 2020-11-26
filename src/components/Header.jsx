@@ -20,6 +20,10 @@ import PopUpSignIn from './PopUpSignIn';
 import PopUpLogIn from './PopUpLogIn';
 
 const Header = () => {
+  const disconnect = () => {
+    // eslint-disable-next-line no-alert
+    alert(`Vous avez bien été déconnecté à la prochaine`);
+  };
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -53,7 +57,7 @@ const Header = () => {
                 Options
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Log out</DropdownItem>
+                <DropdownItem onClick={disconnect}>Log out</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>Night mode</DropdownItem>
               </DropdownMenu>
