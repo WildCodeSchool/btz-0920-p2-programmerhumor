@@ -32,8 +32,14 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
     // eslint-disable-next-line no-alert
     alert('Veuillez renseigner tous les champs ');
   };
+  const notvalidemailmessage = () => {
+    // eslint-disable-next-line no-alert
+    alert(`Adresse mail fournise invalide veuillez en saisir une correcte`);
+  };
   const handleSubmit = () => {
-    if (user.U !== '' && user.e !== '' && user.p !== '') {
+    if (!user.e.split('').includes('@')) {
+      notvalidemailmessage();
+    } else if (user.U !== '' && user.e !== '' && user.p !== '') {
       toggle();
       alertMessage();
     } else {
