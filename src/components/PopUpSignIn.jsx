@@ -69,13 +69,13 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
   };
 
   const handleSubmit = () => {
-    if (!user.e.split('').includes('@')) {
+    if (user.U === '' || user.e === '' || user.p === '') {
+      errorcreate();
+    } else if (!user.e.split('').includes('@')) {
       notvalidemail();
-    } else if (user.U !== '' && user.e !== '' && user.p !== '') {
+    } else {
       toggle();
       accreate();
-    } else {
-      errorcreate();
     }
   };
 
