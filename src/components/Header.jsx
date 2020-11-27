@@ -17,23 +17,35 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedditAlien } from '@fortawesome/free-brands-svg-icons';
 import { BiUserCircle } from 'react-icons/bi';
+import { ToastContainer, toast, Slide } from 'react-toastify';
 import PopUpSignIn from './PopUpSignIn';
 import PopUpLogIn from './PopUpLogIn';
 import UserContext from '../UserContext';
 import './Header.css';
 
-const Header = () => {
-  const disconnect = () => {
-    // eslint-disable-next-line no-alert
-    alert(`You have logged out, see you soon.`);
-  };
+import 'react-toastify/dist/ReactToastify.css';
 
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const { isConnected, setIsConnected, user } = useContext(UserContext);
+  const logout = () => {
+    toast('You have been logged out successfully, see you soon', {
+      position: 'top-right',
+      autoClose: 4000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      transition: Slide,
+      className: 'toastSuccess',
+    });
+  };
   const handleClick = () => {
-    disconnect();
+    toggle();
     setIsConnected(false);
+    logout();
   };
 
   const { darkModeClick, darkMode } = useContext(UserContext);
@@ -77,7 +89,7 @@ const Header = () => {
                   Options
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem onClick={disconnect}>Log out</DropdownItem>
+                  <DropdownItem onClick={handleClick}>Log out</DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem onClick={darkModeClick}>
                     {darkMode ? 'Light mode' : 'Night mode'}
@@ -108,7 +120,7 @@ const Header = () => {
               </UncontrolledDropdown>
             </Nav>
           )}
-
+          <ToastContainer />
           <NavbarText>
             <a
               href="https://www.reddit.com/r/ProgrammerHumor/"

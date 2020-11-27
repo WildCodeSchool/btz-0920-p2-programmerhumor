@@ -18,6 +18,8 @@ const Router = () => {
     setDarkMode(!darkMode);
   };
 
+  const [isClicked, setIsClicked] = useState(false);
+
   return (
     <BrowserRouter>
       <UserContext.Provider
@@ -29,6 +31,8 @@ const Router = () => {
           darkMode,
           setDarkMode,
           darkModeClick,
+          isClicked,
+          setIsClicked,
         }}
       >
         <Layout>
