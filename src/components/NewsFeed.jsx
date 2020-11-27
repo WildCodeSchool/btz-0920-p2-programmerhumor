@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -23,6 +23,7 @@ import {
 } from 'react-icons/ri';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UserContext from '../UserContext';
 
 const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
   const [isLike, setIsLike] = useState(false);
@@ -70,6 +71,8 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
     if (media) setIsVideo(media.split('.').pop() === 'mp4');
   }, [media]);
 
+  const { darkMode } = useContext(UserContext);
+
   return (
     <Col sm="12" md={{ size: 8, offset: 2 }}>
       {url !== ' ' && (
@@ -84,7 +87,7 @@ const NewsFeed = ({ title, url, author, id, permalink, media, score }) => {
               <track default kind="captions" />
             </video>
           )}
-          <CardBody>
+          <CardBody className={darkMode ? 'text-dark' : 'text-dark'}>
             <CardTitle className="font-weight-bold">{title}</CardTitle>
             <CardText>by {author}</CardText>
             <CardText>Likes : {numberScore}</CardText>

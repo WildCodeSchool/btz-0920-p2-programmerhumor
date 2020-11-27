@@ -12,7 +12,14 @@ const Router = () => {
     p: '',
   });
   const [isConnected, setIsConnected] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const darkModeClick = () => {
+    setDarkMode(!darkMode);
+  };
+
   const [isClicked, setIsClicked] = useState(false);
+
   return (
     <BrowserRouter>
       <UserContext.Provider
@@ -21,6 +28,9 @@ const Router = () => {
           setUser,
           isConnected,
           setIsConnected,
+          darkMode,
+          setDarkMode,
+          darkModeClick,
           isClicked,
           setIsClicked,
         }}

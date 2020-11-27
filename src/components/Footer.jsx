@@ -1,11 +1,21 @@
+import { useContext } from 'react';
 import { NavLink } from 'reactstrap';
 import PopUpForm from './PopUpForm';
 import ScrollToTop from './ScrollToTop';
 import './Footer.css';
+import UserContext from '../UserContext';
 
 const Footer = () => {
+  const { darkMode } = useContext(UserContext);
+
   return (
-    <div className="footer fixed-bottom border-top py-2">
+    <div
+      className={
+        darkMode
+          ? 'dark-mode fixed-bottom border-top py-2'
+          : 'light-mode fixed-bottom border-top py-2'
+      }
+    >
       <div className="container d-flex justify-content-around">
         <div className="col-4 text-center">
           <NavLink>
