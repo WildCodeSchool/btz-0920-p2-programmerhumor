@@ -11,7 +11,9 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
+import { ToastContainer, toast, Slide } from 'react-toastify';
 import UserContext from '../UserContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PopUpSignIn = ({ buttonLabel, className }) => {
   const [modal, setModal] = useState(false);
@@ -23,28 +25,57 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
     setUser({ ...user, [name]: event.target.value });
   };
 
-  const alertMessage = () => {
-    // eslint-disable-next-line no-alert
-    alert(
-      `Congratulations ${user.U}. You have created your account. Please login.`
+  const accreate = () => {
+    toast(
+      `Congratulations ${user.U}. You have created your account. Please login.`,
+      {
+        position: 'top-right',
+        autoClose: 4000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        transition: Slide,
+        className: 'toastSuccess',
+      }
     );
   };
-  const errorMessage = () => {
-    // eslint-disable-next-line no-alert
-    alert('Please fill out all mandatory fields.');
+  const notvalidemail = () => {
+    toast(`Your email address is invalid, please try again.`, {
+      position: 'top-right',
+      autoClose: 4000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      transition: Slide,
+      className: 'toastFailed',
+    });
   };
-  const notvalidemailmessage = () => {
-    // eslint-disable-next-line no-alert
-    alert(`Your email address is invalid, please try again.`);
+  const errorcreate = () => {
+    toast('Please fill out all mandatory fields.', {
+      position: 'top-right',
+      autoClose: 4000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      transition: Slide,
+      className: 'toastFailed',
+    });
   };
+
   const handleSubmit = () => {
     if (!user.e.split('').includes('@')) {
-      notvalidemailmessage();
+      notvalidemail();
     } else if (user.U !== '' && user.e !== '' && user.p !== '') {
       toggle();
-      alertMessage();
+      accreate();
     } else {
-      errorMessage();
+      errorcreate();
     }
   };
 
@@ -116,6 +147,7 @@ const PopUpSignIn = ({ buttonLabel, className }) => {
             </FormGroup>
           </Form>
         </ModalBody>
+        <ToastContainer />
         <ModalFooter>
           <Button
             className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
