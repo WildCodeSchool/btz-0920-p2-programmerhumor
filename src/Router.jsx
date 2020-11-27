@@ -12,10 +12,24 @@ const Router = () => {
     p: '',
   });
   const [isConnected, setIsConnected] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const darkModeClick = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <BrowserRouter>
       <UserContext.Provider
-        value={{ user, setUser, isConnected, setIsConnected }}
+        value={{
+          user,
+          setUser,
+          isConnected,
+          setIsConnected,
+          darkMode,
+          setDarkMode,
+          darkModeClick,
+        }}
       >
         <Layout>
           <Switch>

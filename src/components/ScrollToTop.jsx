@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { IoIosArrowDropup } from 'react-icons/io';
+import UserContext from '../UserContext';
 import './scrollToTop.css';
 
 const ScrollToTop = () => {
   const [topScroll, settopScroll] = useState(false);
+
+  const { darkMode } = useContext(UserContext);
 
   const checkScrollTop = () => {
     if (!topScroll && window.pageYOffset > 400) {
@@ -22,7 +25,7 @@ const ScrollToTop = () => {
   return (
     <IoIosArrowDropup
       size={50}
-      color="#585e68"
+      color={darkMode ? 'white' : '#585e68'}
       className={topScroll && 'scrollTopOrange'}
       onClick={scrollTop}
     />

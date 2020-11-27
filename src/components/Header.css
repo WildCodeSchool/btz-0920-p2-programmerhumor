@@ -1,8 +1,9 @@
-.footer-dark-mode {
+.header-dark-mode {
   background-color: #343a40;
   color: white;
 }
 
-.footer-light-mode {
+.header-light-mode {
   background-color: #f8f9fa;
+  color: #585e68;
 }

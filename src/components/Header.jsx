@@ -20,6 +20,7 @@ import { BiUserCircle } from 'react-icons/bi';
 import PopUpSignIn from './PopUpSignIn';
 import PopUpLogIn from './PopUpLogIn';
 import UserContext from '../UserContext';
+import './Header.css';
 
 const Header = () => {
   const disconnect = () => {
@@ -35,9 +36,15 @@ const Header = () => {
     setIsConnected(false);
   };
 
+  const { darkModeClick, darkMode } = useContext(UserContext);
+
   return (
     <div className="border-bottom w-100">
-      <Navbar color="light" light expand="md">
+      <Navbar
+        className={darkMode ? 'header-dark-mode' : 'header-light-mode'}
+        light
+        expand="md"
+      >
         <NavbarBrand tag={Link} to="/">
           <FontAwesomeIcon icon={faRedditAlien} size="4x" color="#fe4602" />
         </NavbarBrand>
@@ -61,20 +68,26 @@ const Header = () => {
                 nav
                 inNavbar
               >
-                <DropdownToggle className="pt-3" nav caret>
+                <DropdownToggle
+                  className={darkMode ? 'pt-3 text-white' : 'pt-3'}
+                  nav
+                  caret
+                >
                   {' '}
                   Options
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem onClick={disconnect}>Log out</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>Night mode</DropdownItem>
+                  <DropdownItem onClick={darkModeClick}>
+                    {darkMode ? 'Light mode' : 'Night mode'}
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
           ) : (
             <Nav className="mr-auto" navbar>
-              <NavItem className="d-flex align-items-center mt-2 color-darkGrey">
+              <NavItem className="d-flex align-items-center mt-2">
                 <BiUserCircle size="2rem" /> {user.U}
               </NavItem>
               <UncontrolledDropdown
@@ -83,7 +96,7 @@ const Header = () => {
                 nav
                 inNavbar
               >
-                <DropdownToggle className="pt-3 color-darkGrey" nav caret>
+                <DropdownToggle className="pt-3 " nav caret>
                   {' '}
                   Options
                 </DropdownToggle>
@@ -100,7 +113,11 @@ const Header = () => {
             <a
               href="https://www.reddit.com/r/ProgrammerHumor/"
               target="blank"
-              className="text-decoration-none color-darkGrey title-font-size font-weight-bold pr-3 d-none d-md-block"
+              className={
+                darkMode
+                  ? 'text-decoration-none text-white title-font-size font-weight-bold pr-3 d-none d-md-block'
+                  : 'text-decoration-none color-darkGrey title-font-size font-weight-bold pr-3 d-none d-md-block'
+              }
             >
               {' '}
               Reddit Programmer Humor
