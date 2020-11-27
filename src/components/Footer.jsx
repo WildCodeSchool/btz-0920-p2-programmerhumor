@@ -12,8 +12,8 @@ const Footer = () => {
     <div
       className={
         darkMode
-          ? 'dark-mode fixed-bottom border-top py-2'
-          : 'light-mode fixed-bottom border-top py-2'
+          ? 'footer-dark-mode fixed-bottom border-top py-2'
+          : 'footer-light-mode fixed-bottom border-top py-2'
       }
     >
       <div className="container d-flex justify-content-around">

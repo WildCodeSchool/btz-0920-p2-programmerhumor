@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Axios from 'axios';
 import {
   Card,
@@ -25,6 +25,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Article.css';
+import UserContext from '../UserContext';
 
 const Article = () => {
   const [posts, setPosts] = useState([]);
@@ -81,11 +82,17 @@ const Article = () => {
       </Col>
     );
 
+  const { darkMode } = useContext(UserContext);
+
   return (
     <Col sm="12" md={{ size: 10, offset: 1 }} className="article">
       <Card className="mt-3">
         <CardImg top width="100%" src={posts.url} alt="Card image cap" />
-        <CardBody className="text-center">
+        <CardBody
+          className={
+            darkMode ? 'text-dark text-center' : 'text-dark text-center'
+          }
+        >
           <CardTitle className="font-weight-bold">{posts.title}</CardTitle>
           <CardText className="font-weight-bold">by {posts.author}</CardText>
           <CardText>{msg}</CardText>
