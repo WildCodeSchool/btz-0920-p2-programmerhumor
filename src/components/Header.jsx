@@ -108,14 +108,20 @@ const Header = () => {
                 nav
                 inNavbar
               >
-                <DropdownToggle className="pt-3 " nav caret>
+                <DropdownToggle
+                  className={darkMode ? 'pt-3 text-white' : 'pt-3'}
+                  nav
+                  caret
+                >
                   {' '}
                   Options
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem onClick={handleClick}>Log out</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>Night mode</DropdownItem>
+                  <DropdownItem onClick={darkModeClick}>
+                    {darkMode ? 'Light mode' : 'Night mode'}
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
