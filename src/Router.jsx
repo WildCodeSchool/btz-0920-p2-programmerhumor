@@ -12,10 +12,18 @@ const Router = () => {
     p: '',
   });
   const [isConnected, setIsConnected] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   return (
     <BrowserRouter>
       <UserContext.Provider
-        value={{ user, setUser, isConnected, setIsConnected }}
+        value={{
+          user,
+          setUser,
+          isConnected,
+          setIsConnected,
+          isClicked,
+          setIsClicked,
+        }}
       >
         <Layout>
           <Switch>

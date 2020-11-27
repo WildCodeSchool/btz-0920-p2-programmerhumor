@@ -11,7 +11,9 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
+import { ToastContainer, toast, Slide } from 'react-toastify';
 import UserContext from '../UserContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PopUpLogIn = ({ buttonLabel, className }) => {
   const [modal, setModal] = useState(false);
@@ -25,23 +27,40 @@ const PopUpLogIn = ({ buttonLabel, className }) => {
   };
   const toggle = () => setModal(!modal);
 
-  const errorMessage = () => {
-    // eslint-disable-next-line no-alert
-    alert(`The authentication has failed, please try again.`);
+  const login = () => {
+    toast(`Welcome ${user.U}`, {
+      position: 'top-right',
+      autoClose: 4000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      transition: Slide,
+      className: 'toastSuccess',
+    });
   };
-
-  const logMessage = () => {
-    // eslint-disable-next-line no-alert
-    alert(`Welcome ${user.U}!`);
+  const logerror = () => {
+    toast(`The authentication has failed, please try again.`, {
+      position: 'top-right',
+      autoClose: 4000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      transition: Slide,
+      className: 'toastFailed',
+    });
   };
 
   const handleSubmit = () => {
     if (user.e === entries.e && user.p === entries.p) {
       setIsConnected(true);
       toggle();
-      logMessage();
+      login();
     } else {
-      errorMessage();
+      logerror();
     }
   };
   const closeBtn = (
@@ -94,6 +113,7 @@ const PopUpLogIn = ({ buttonLabel, className }) => {
             </FormGroup>
           </Form>
         </ModalBody>
+        <ToastContainer />
         <ModalFooter>
           <Button
             className="btn-orange btn-orange:hover btn-orange:not(:disabled):not(.disabled):active"
