@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { NavLink } from 'reactstrap';
 import PopUpForm from './PopUpForm';
 import ScrollToTop from './ScrollToTop';
-import './Footer.css';
+import './footer.css';
 import UserContext from '../UserContext';
 
 const Footer = () => {
