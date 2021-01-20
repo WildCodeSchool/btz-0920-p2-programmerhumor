@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.btn-orange {
+  color: #fe4602 !important;
+  border-color: #fe4602 !important;
+}
+
+.btn-orange:hover {
+  color: white !important;
+  background-color: #fe4602 !important;
+}
+
+.btn-orange:not(:disabled):not(.disabled):active {
+  background-color: #fe4602 !important;
+}
+
+.btn-orange-filter {
+  color: #fe4602;
+  border-color: #fe4602;
+  background-color: white;
+  border: solid 2px;
+}
+
+.btn-orange-filter:hover {
+  color: white;
+  background-color: #fe4602;
+}
+
+.btn-active {
+  color: white;
+  background-color: #fe4602;
+}
+
+.color-darkGrey {
+  color: #585e68 !important;
+}
+
+.title-font-size {
+  font-size: 1.2rem !important;
+}
+
+.button-outline:focus {
+  outline: none !important;
+  outline-offset: none !important;
+}
+
+.spinner {
+  color: #fe4602 !important;
+}
+
+.iconShare {
+  color: #585e68 !important;
+}
+.iconShare:hover {
+  color: #fe4602 !important;
+}
+.toastCustom {
+  border-radius: 5px !important;
+  border: 2px solid #fe4602 !important;
+  box-shadow: none !important;
+  color: #fe4602 !important;
+}
+.toastSuccess {
+  border-radius: 5px !important;
+  border: 2px solid green !important;
+  box-shadow: none !important;
+  color: green !important;
+}
+.toastFailed {
+  border-radius: 5px !important;
+  border: 2px solid red !important;
+  box-shadow: none !important;
+  color: red !important;
+}
