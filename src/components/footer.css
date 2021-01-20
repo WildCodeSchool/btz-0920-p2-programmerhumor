@@ -1,4 +1,13 @@
-.Footer_section {
+.footer-dark-mode {
+  background-color: #343a40;
+  color: white;
+}
+
+.footer-light-mode {
+  background-color: #f8f9fa;
+}
+
+.footer_section {
   display: flex;
   justify-content: space-around;
   position: fixed;
@@ -10,7 +19,7 @@
   background-color: #f1f1f1;
 }
 
-Footer {
+.Footer {
   width: 100%;
   height: 40px;
 }
